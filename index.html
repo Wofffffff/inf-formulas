@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ОГЭ информатика · Задание 7</title>
+    <style>
+        :root {
+            --bg: #eef1f5;
+            --app-bg: #ffffff;
+            --app-border: #d8dee6;
+            --text: #1a2c44;
+            --text-soft: #5a6b80;
+            --text-muted: #7a8ca0;
+            --panel-bg: #fbfcfe;
+            --panel-border: #d5dee9;
+            --panel-divider: #e2e8f1;
+            --accent: #2f5c96;
+            --accent-hover: #23497a;
+            --accent-soft: #eaf1fb;
+            --accent-border: #9ab8dc;
+            --part-bg: #ffffff;
+            --part-border: #d5dee9;
+            --part-hover-bg: #edf3fb;
+            --part-hover-border: #8faed0;
+            --part-used-bg: #eef1f5;
+            --part-used-border: #cfd8e3;
+            --input-bg: #ffffff;
+            --input-border: #c2cfe0;
+            --input-focus: #4a78b0;
+            --btn-primary-bg: #2f5c96;
+            --btn-primary-hover: #23497a;
+            --btn-secondary-bg: #ffffff;
+            --btn-secondary-border: #9db8d6;
+            --btn-secondary-hover: #eef3fa;
+            --feedback-neutral-bg: #eef3fa;
+            --feedback-neutral-text: #2f4d72;
+            --feedback-neutral-border: #cddef0;
+            --feedback-correct-bg: #e6f5ec;
+            --feedback-correct-text: #1c6b3b;
+            --feedback-correct-border: #a9d5b9;
+            --feedback-incorrect-bg: #fdecec;
+            --feedback-incorrect-text: #a83535;
+            --feedback-incorrect-border: #f0b9b9;
+            --feedback-solution-bg: #f2eefb;
+            --feedback-solution-text: #46347a;
+            --feedback-solution-border: #cec0ec;
+            --shadow-app: 0 6px 24px rgba(0, 0, 0, 0.08);
+            --shadow-chip: 0 1px 3px rgba(20, 40, 80, 0.06);
+            --header-gradient: linear-gradient(90deg, #2f5c96 0%, #4a78b0 100%);
+        }
+
+        [data-theme="dark"] {
+            --bg: #10161f;
+            --app-bg: #1a2330;
+            --app-border: #2a374a;
+            --text: #e6edf6;
+            --text-soft: #a4b3c7;
+            --text-muted: #7e8fa5;
+            --panel-bg: #1f2a3a;
+            --panel-border: #2c3a4f;
+            --panel-divider: #2c3a4f;
+            --accent: #5b8fd6;
+            --accent-hover: #7aa7e6;
+            --accent-soft: #223349;
+            --accent-border: #3f5f8a;
+            --part-bg: #223043;
+            --part-border: #2f4056;
+            --part-hover-bg: #2b3d55;
+            --part-hover-border: #4f7ab0;
+            --part-used-bg: #1b2534;
+            --part-used-border: #2a374a;
+            --input-bg: #16202d;
+            --input-border: #33465f;
+            --input-focus: #5b8fd6;
+            --btn-primary-bg: #3b6ea8;
+            --btn-primary-hover: #4f83c2;
+            --btn-secondary-bg: #223043;
+            --btn-secondary-border: #3f5f8a;
+            --btn-secondary-hover: #2b3d55;
+            --feedback-neutral-bg: #223349;
+            --feedback-neutral-text: #b9cbe2;
+            --feedback-neutral-border: #33465f;
+            --feedback-correct-bg: #17362a;
+            --feedback-correct-text: #8ee0b0;
+            --feedback-correct-border: #2f6b4b;
+            --feedback-incorrect-bg: #3a1e22;
+            --feedback-incorrect-text: #f0a5a5;
+            --feedback-incorrect-border: #6b3035;
+            --feedback-solution-bg: #2a2440;
+            --feedback-solution-text: #c3b3ec;
+            --feedback-solution-border: #4b3f7a;
+            --shadow-app: 0 8px 30px rgba(0, 0, 0, 0.5);
+            --shadow-chip: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --header-gradient: linear-gradient(90deg, #23497a 0%, #3b6ea8 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+        }
+
+        body {
+            background: var(--bg);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 32px 40px;
+            color: var(--text);
+        }
+
+        .app {
+            width: 100%;
+            max-width: 1400px;
+            background: var(--app-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow-app);
+            padding: 0 0 44px 0;
+            border: 1px solid var(--app-border);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--header-gradient);
+            padding: 22px 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            color: #ffffff;
+        }
+
+        .header-left h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+            letter-spacing: -0.2px;
+            color: #ffffff;
+        }
+
+        .header-left .subtitle {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .prototype-badge {
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            padding: 6px 14px;
+            font-weight: 500;
+            color: #ffffff;
+            backdrop-filter: blur(4px);
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 16px;
+            width: 40px;
+            height: 36px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.28);
+            transform: translateY(-1px);
+        }
+
+        .content {
+            padding: 28px 44px 0;
+        }
+
+        .task-statement {
+            background: var(--accent-soft);
+            border-left: 4px solid var(--accent);
+            padding: 18px 22px;
+            border-radius: 6px;
+            margin-bottom: 26px;
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--text);
+        }
+
+        .task-statement .task-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.8px;
+        }
+
+        .task-statement .task-desc { margin-bottom: 10px; }
+        .task-statement .task-question { font-weight: 500; }
+
+        .work-area {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .parts-panel {
+            flex: 1 1 360px;
+            min-width: 300px;
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            padding: 18px 18px 22px;
+        }
+
+        .parts-panel h3,
+        .build-zone h3 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-soft);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin: 0 0 14px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--panel-divider);
+        }
+
+        .part-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 14px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            background: var(--part-bg);
+            border: 1px solid var(--part-border);
+            cursor: pointer;
+            user-select: none;
+            box-shadow: var(--shadow-chip);
+        }
+
+        .part-row:hover {
+            background: var(--part-hover-bg);
+            border-color: var(--part-hover-border);
+            transform: translateX(2px);
+        }
+
+        .part-row.used {
+            opacity: 0.4;
+            background: var(--part-used-bg);
+            border-color: var(--part-used-border);
+            cursor: default;
+            pointer-events: none;
+            box-shadow: none;
+        }
+
+        .part-number {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 15px;
+            min-width: 26px;
+            text-align: right;
+        }
+
+        .part-text {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 15px;
+            color: var(--text);
+            word-break: break-all;
+        }
+
+        .build-panel {
+            flex: 2 1 500px;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .build-zone {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            padding: 18px;
+            min-height: 130px;
+        }
+
+        .assembled-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .assembled-empty {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .assembled-chip {
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-border);
+            border-radius: 5px;
+            padding: 7px 12px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            color: var(--text);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: var(--shadow-chip);
+        }
+
+        .assembled-chip:hover {
+            background: var(--part-hover-bg);
+            border-color: var(--part-hover-border);
+        }
+
+        .assembled-chip .chip-num {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 3px;
+            margin-right: 6px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .answer-block {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            padding: 18px 20px;
+        }
+
+        .answer-block label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-soft);
+            margin-bottom: 10px;
+        }
+
+        .answer-block .hint {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: 4px;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border: 1.5px solid var(--input-border);
+            font-size: 18px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            letter-spacing: 6px;
+            background: var(--input-bg);
+            color: var(--text);
+            outline: none;
+        }
+
+        .answer-input:focus {
+            border-color: var(--input-focus);
+            box-shadow: 0 0 0 3px rgba(74, 120, 176, 0.18);
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1 1 auto;
+            min-width: 150px;
+            padding: 12px 20px;
+            border-radius: 6px;
+            border: 1.5px solid transparent;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 0.2px;
+        }
+
+        .btn-primary {
+            background: var(--btn-primary-bg);
+            color: #ffffff;
+            border-color: var(--btn-primary-bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--btn-primary-hover);
+            border-color: var(--btn-primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--btn-secondary-bg);
+            color: var(--accent);
+            border-color: var(--btn-secondary-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--btn-secondary-hover);
+            border-color: var(--accent-border);
+            transform: translateY(-1px);
+        }
+
+        .feedback {
+            margin-top: 16px;
+            padding: 14px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.6;
+            display: block;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .feedback.neutral {
+            background: var(--feedback-neutral-bg);
+            color: var(--feedback-neutral-text);
+            border: 1px solid var(--feedback-neutral-border);
+        }
+
+        .feedback.correct {
+            background: var(--feedback-correct-bg);
+            color: var(--feedback-correct-text);
+            border: 1px solid var(--feedback-correct-border);
+        }
+
+        .feedback.incorrect {
+            background: var(--feedback-incorrect-bg);
+            color: var(--feedback-incorrect-text);
+            border: 1px solid var(--feedback-incorrect-border);
+        }
+
+        .feedback.solution {
+            background: var(--feedback-solution-bg);
+            color: var(--feedback-solution-text);
+            border: 1px solid var(--feedback-solution-border);
+            display: block;
+        }
+
+        .feedback.solution .sol-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feedback.solution .sol-label {
+            font-size: 13px;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .feedback.solution .sol-answer {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background: var(--input-bg);
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid var(--feedback-solution-border);
+            color: var(--text);
+            word-break: break-all;
+            font-size: 14px;
+            margin: 2px 0 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .feedback.solution .sol-explain {
+            font-size: 13px;
+            line-height: 1.7;
+            margin-top: 4px;
+        }
+
+        .feedback.solution .sol-list {
+            margin: 8px 0 0 0;
+            padding-left: 20px;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .feedback.solution .sol-list li { margin-bottom: 2px; }
+        .feedback.solution .sol-list b { color: var(--accent); }
+
+        @media (max-width: 820px) {
+            body { padding: 16px; }
+            .header, .content { padding-left: 22px; padding-right: 22px; }
+            .work-area { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+
+    <div class="header">
+        <div class="header-left">
+            <h1>ОГЭ по информатике · Задание 7</h1>
+            <div class="subtitle">Адресация в сети Интернет</div>
+        </div>
+        <div class="header-right">
+            <div class="prototype-badge" id="prototypeBadge">Прототип: —</div>
+            <button class="theme-toggle" id="themeToggle" title="Переключить тему" aria-label="Переключить тему">🌙</button>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="task-statement">
+            <div class="task-title">Условие</div>
+            <div class="task-desc" id="taskDesc">
+                Доступ к файлу осуществляется по протоколу, указанному в условии.
+            </div>
+            <div class="task-question">
+                Фрагменты адреса закодированы цифрами от 1 до N. Запишите последовательность этих цифр, кодирующую адрес в сети Интернет.
+            </div>
+        </div>
+
+        <div class="work-area">
+
+            <div class="parts-panel">
+                <h3>Фрагменты адреса</h3>
+                <div id="partsList"></div>
+            </div>
+
+            <div class="build-panel">
+
+                <div class="build-zone">
+                    <h3>Собранный адрес</h3>
+                    <div id="assembledContainer" class="assembled-container">
+                        <div class="assembled-empty" id="assembledEmpty">
+                            Нажимайте на фрагменты слева — они появятся здесь в порядке выбора.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="answer-block">
+                    <label>
+                        Ваш ответ:
+                        <span class="hint">(последовательность цифр без пробелов)</span>
+                    </label>
+                    <input type="text" id="answerInput" class="answer-input" autocomplete="off" spellcheck="false" inputmode="numeric">
+
+                    <div class="actions">
+                        <button class="btn btn-primary" id="checkBtn">Проверить</button>
+                        <button class="btn btn-secondary" id="solutionBtn">Решение</button>
+                        <button class="btn btn-secondary" id="newTaskBtn">Новое задание</button>
+                    </div>
+
+                    <div id="feedback" class="feedback neutral">
+                        Выберите фрагменты адреса слева, затем введите последовательность цифр.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        /* ---------- Списки слов ---------- */
+        const PROTOCOLS = ['https', 'http', 'ftp'];
+        const SERVERS = ['school', 'lyceum', 'university', 'college', 'gymnasium', 'academy', 'institute', 'campus'];
+        const TLDS = ['.ru', '.com', '.org', '.net', '.edu', '.gov'];
+        const PATHS = ['file', 'doc', 'task', 'page', 'index', 'test', 'info', 'data', 'upload', 'download'];
+        const FILENAMES = ['report', 'task', 'lesson', 'exam', 'notes', 'summary', 'project', 'schedule', 'plan', 'result'];
+        const EXTENSIONS = ['.html', '.pdf', '.docx', '.txt', '.jpg', '.png', '.xml', '.json'];
+        const MAILBOXES = ['teacher', 'student', 'admin', 'user', 'manager', 'director'];
+
+        const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+        const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+        /* ---------- Утилиты ---------- */
+        function shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        /* ---------- Построение задания ----------
+         * fragments — массив объектов { text, correct, order }
+         *   correct: true — входит в правильный ответ
+         *   order: позиция в правильном адресе (для correct=true)
+         */
+        function buildTask(fragments, correct, prototypeName, desc, explain) {
+            const numbered = shuffle([...fragments]);
+            numbered.forEach((p, i) => { p.num = i + 1; });
+
+            const correctFragments = numbered
+                .filter(p => p.correct)
+                .sort((a, b) => a.order - b.order);
+            const correctOrder = correctFragments.map(p => p.num);
+
+            return {
+                parts: numbered,
+                correctOrder: correctOrder,
+                correctString: correct,
+                prototypeName: prototypeName,
+                desc: desc,
+                explain: explain
+            };
+        }
+
+        /* ---------- Прототип 1. URL-адрес (7 фрагментов) ----------
+         * Пример: ftp://school.org/test.xls
+         * Фрагменты: ftp, ://, school, .org, /, test, .xls
+         */
+        function proto1() {
+            const p = rand(PROTOCOLS);
+            const s = rand(SERVERS);
+            const t = rand(TLDS);
+            const fname = rand(FILENAMES);
+            const ext = rand(EXTENSIONS);
+
+            const fragments = [
+                { text: p,         correct: true, order: 1 },
+                { text: '://',     correct: true, order: 2 },
+                { text: s,         correct: true, order: 3 },
+                { text: t,         correct: true, order: 4 },
+                { text: '/',       correct: true, order: 5 },
+                { text: fname,     correct: true, order: 6 },
+                { text: ext,       correct: true, order: 7 }
+            ];
+
+            const correct = `${p}://${s}${t}/${fname}${ext}`;
+            const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${s}${t}</b>, ` +
+                         `осуществляется по протоколу <b>${p}</b>. Фрагменты адреса файла закодированы ` +
+                         `цифрами от 1 до ${fragments.length}. Запишите последовательность этих цифр, ` +
+                         `кодирующую адрес указанного файла в сети Интернет.`;
+            const explain = `Напомним, как формируется адрес в сети Интернет. Сначала указывается протокол, ` +
+                            `потом «://», потом сервер, затем «/», название файла указывается в конце. ` +
+                            `Таким образом, адрес будет следующим: <b>${correct}</b>.`;
+
+            return buildTask(fragments, correct, 'URL-адрес', desc, explain);
+        }
+
+        /* ---------- Прототип 2. IP-адрес (4 фрагмента) ----------
+         * Четыре числа 0–255, разделённые точками. Один фрагмент — с ведущей точкой.
+         */
+        function proto2() {
+            const nums = [];
+            while (nums.length < 4) {
+                const n = randInt(0, 255);
+                if (!nums.includes(n)) nums.push(n);
+            }
+            const lastIdx = randInt(0, 3);
+            const dotIdx = (lastIdx + 1) % 4;
+
+            const fragments = [];
+            nums.forEach((n, i) => {
+                let text = String(n);
+                if (i === dotIdx) text = '.' + n;
+                fragments.push({ text: text, correct: true, order: i + 1 });
+            });
+
+            const correct = nums.join('.');
+            const desc = `На месте происшествия обнаружены четыре обрывка бумаги. Следствие установило, ` +
+                         `что на них записаны фрагменты одного IP-адреса. Фрагменты обозначены цифрами ` +
+                         `от 1 до 4. Восстановите IP-адрес. В ответе укажите последовательность цифр, ` +
+                         `обозначающих фрагменты, в порядке, соответствующем IP-адресу.`;
+            const explain = `IP-адрес представляет собой четыре разделённых точками числа, каждое из которых ` +
+                            `не больше 255. Фрагмент, начинающийся с точки, не может стоять первым — иначе ` +
+                            `точка окажется в начале адреса. Фрагмент без точки должен стоять первым или ` +
+                            `после фрагмента с точкой. Правильный адрес: <b>${correct}</b>.`;
+
+            return buildTask(fragments, correct, 'IP-адрес', desc, explain);
+        }
+
+        /* ---------- Прототип 3. URL с протоколом и слэшем (7 фрагментов) ----------
+         * Пример: http://magazin.com/kassa.xls
+         */
+        function proto3() {
+            const p = rand(PROTOCOLS);
+            const s = 'magazin';
+            const t = rand(['.com', '.ru', '.org', '.net']);
+            const fname = rand(['kassa', 'cassa', 'folder', 'summa', 'check', 'order']);
+            const ext = rand(['.xls', '.xlsx', '.pdf', '.doc']);
+
+            const fragments = [
+                { text: p,         correct: true, order: 1 },
+                { text: '://',     correct: true, order: 2 },
+                { text: s,         correct: true, order: 3 },
+                { text: t,         correct: true, order: 4 },
+                { text: '/',       correct: true, order: 5 },
+                { text: fname,     correct: true, order: 6 },
+                { text: ext,       correct: true, order: 7 }
+            ];
+
+            const correct = `${p}://${s}${t}/${fname}${ext}`;
+            const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${s}${t}</b>, ` +
+                         `осуществляется по протоколу <b>${p}</b>. Фрагменты адреса файла закодированы ` +
+                         `цифрами от 1 до ${fragments.length}. Запишите последовательность этих цифр, ` +
+                         `кодирующую адрес указанного файла в сети Интернет.`;
+            const explain = `Напомним, как формируется адрес в сети Интернет. Сначала указывается протокол, ` +
+                            `потом «://», потом сервер, затем «/», название файла указывается в конце. ` +
+                            `Таким образом, адрес будет следующим: <b>${correct}</b>.`;
+
+            return buildTask(fragments, correct, 'URL с протоколом', desc, explain);
+        }
+
+        /* ---------- Прототип 4. Электронная почта (6 фрагментов) ----------
+         * Пример: teacher@shkola1.mos.ru
+         * Фрагменты: teacher, @, shkola1, .mos, .ru — не хватает одного.
+         * Разбиваем так: teacher, @, shkola1, ., mos, .ru  → 6.
+         */
+        function proto4() {
+            const box = rand(MAILBOXES);
+            const srv = rand(['shkola', 'school', 'lyceum', 'campus']) + randInt(1, 9);
+            const d1 = rand(['mos', 'spb', 'edu', 'mail', 'list']);
+            const t = rand(TLDS);
+
+            const fragments = [
+                { text: box,       correct: true, order: 1 },
+                { text: '@',       correct: true, order: 2 },
+                { text: srv,       correct: true, order: 3 },
+                { text: '.',       correct: true, order: 4 },
+                { text: d1,        correct: true, order: 5 },
+                { text: t,         correct: true, order: 6 }
+            ];
+
+            const correct = `${box}@${srv}.${d1}${t}`;
+            const desc = `Почтовый ящик <b>${box}</b> находится на сервере <b>${srv}.${d1}${t}</b>. ` +
+                         `В таблице фрагменты адреса электронной почты закодированы цифрами от 1 до ` +
+                         `${fragments.length}. Запишите последовательность цифр, кодирующую этот адрес.`;
+            const explain = `Напомним, как формируется почтовый адрес в сети Интернет. Сначала указывается ` +
+                            `имя почтового ящика, потом «@», потом сервер, на котором находится почтовый ящик. ` +
+                            `Таким образом, искомый адрес будет следующим: <b>${correct}</b>.`;
+
+            return buildTask(fragments, correct, 'Электронная почта', desc, explain);
+        }
+
+        /* ---------- Прототип 5. URL с каталогом (8 фрагментов) ----------
+         * Пример: http://web.txt/http.com
+         * Фрагменты: http, ://, web, .txt, /, http, .com  → 7.
+         * Сделаем 8: добавим ещё один уровень каталога.
+         * Пример: http://web.txt/portal/index.html
+         */
+        function proto5() {
+            const p = rand(PROTOCOLS);
+            const srv = rand(['web', 'host', 'server', 'site', 'portal']);
+            const t1 = rand(['.txt', '.info', '.site', '.data', '.cloud']);
+            const pathName = rand(['portal', 'index', 'main', 'home', 'start']);
+            const fname = rand(['page', 'file', 'doc', 'task']);
+            const ext = rand(['.html', '.htm', '.php', '.asp']);
+
+            const fragments = [
+                { text: p,         correct: true, order: 1 },
+                { text: '://',     correct: true, order: 2 },
+                { text: srv,       correct: true, order: 3 },
+                { text: t1,        correct: true, order: 4 },
+                { text: '/',       correct: true, order: 5 },
+                { text: pathName,  correct: true, order: 6 },
+                { text: '/',       correct: true, order: 7 },
+                { text: fname + ext, correct: true, order: 8 }
+            ];
+
+            const correct = `${p}://${srv}${t1}/${pathName}/${fname}${ext}`;
+            const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере ` +
+                         `<b>${srv}${t1}</b>, осуществляется по протоколу <b>${p}</b>. Файл находится ` +
+                         `в каталоге <b>${pathName}</b>. Запишите последовательность цифр, кодирующую ` +
+                         `адрес этого файла в сети Интернет.`;
+            const explain = `Напомним, как формируется адрес в сети Интернет. Сначала указывается протокол, ` +
+                            `потом «://», потом сервер, затем «/», каталог, снова «/», и название файла. ` +
+                            `Таким образом, адрес будет следующим: <b>${correct}</b>.`;
+
+            return buildTask(fragments, correct, 'URL с каталогом', desc, explain);
+        }
+
+        /* ---------- Прототип 6. URL с дистракторами (9 фрагментов) ----------
+         * 7 правильных + 2 лишних.
+         */
+        function proto6() {
+            const p = rand(PROTOCOLS);
+            const s = rand(SERVERS);
+            const t = rand(TLDS);
+            const fname = rand(FILENAMES);
+            const ext = rand(EXTENSIONS);
+
+            const fakeExt = rand(EXTENSIONS.filter(e => e !== ext));
+            const fakeTld = rand(TLDS.filter(x => x !== t));
+
+            const fragments = [
+                { text: p,         correct: true,  order: 1 },
+                { text: '://',     correct: true,  order: 2 },
+                { text: s,         correct: true,  order: 3 },
+                { text: t,         correct: true,  order: 4 },
+                { text: '/',       correct: true,  order: 5 },
+                { text: fname,     correct: true,  order: 6 },
+                { text: ext,       correct: true,  order: 7 },
+                { text: fakeExt,   correct: false, order: 0 },
+                { text: fakeTld,   correct: false, order: 0 }
+            ];
+
+            const correct = `${p}://${s}${t}/${fname}${ext}`;
+            const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${s}${t}</b>, ` +
+                         `осуществляется по протоколу <b>${p}</b>. Среди предложенных фрагментов есть лишние. ` +
+                         `Запишите последовательность цифр, кодирующую адрес указанного файла.`;
+            const explain = `Напомним, как формируется адрес в сети Интернет. Сначала указывается протокол, ` +
+                            `потом «://», потом сервер, затем «/», название файла указывается в конце. ` +
+                            `Часть фрагментов — лишние (чужое расширение, чужой домен верхнего уровня), они ` +
+                            `в адрес не входят. Правильный адрес: <b>${correct}</b>.`;
+
+            return buildTask(fragments, correct, 'URL с дистракторами', desc, explain);
+        }
+
+        const PROTOTYPES = [proto1, proto2, proto3, proto4, proto5, proto6];
+
+        /* ---------- Состояние ---------- */
+        let currentTask = null;
+        let usedNums = new Set();
+        let assembled = [];
+
+        /* ---------- DOM ---------- */
+        const partsListEl = document.getElementById('partsList');
+        const assembledContainer = document.getElementById('assembledContainer');
+        const answerInput = document.getElementById('answerInput');
+        const feedback = document.getElementById('feedback');
+        const prototypeBadge = document.getElementById('prototypeBadge');
+        const taskDesc = document.getElementById('taskDesc');
+        const themeToggle = document.getElementById('themeToggle');
+
+        /* ---------- Тема ---------- */
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+            try { localStorage.setItem('oge7-theme', theme); } catch (e) {}
+        }
+
+        function initTheme() {
+            let saved = null;
+            try { saved = localStorage.getItem('oge7-theme'); } catch (e) {}
+            if (saved === 'dark' || saved === 'light') {
+                applyTheme(saved);
+            } else {
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                applyTheme(prefersDark ? 'dark' : 'light');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            applyTheme(current === 'dark' ? 'light' : 'dark');
+        });
+
+        /* ---------- Отрисовка ---------- */
+        function renderParts() {
+            partsListEl.innerHTML = '';
+            const sorted = [...currentTask.parts].sort((a, b) => a.num - b.num);
+            sorted.forEach(part => {
+                const row = document.createElement('div');
+                row.className = 'part-row' + (usedNums.has(part.num) ? ' used' : '');
+                row.dataset.num = part.num;
+                const display = part.text === '' ? '&nbsp;' : escapeHtml(part.text);
+                row.innerHTML =
+                    '<span class="part-number">' + part.num + ')</span>' +
+                    '<span class="part-text">' + display + '</span>';
+                row.addEventListener('click', () => addPart(part.num));
+                partsListEl.appendChild(row);
+            });
+        }
+
+        function renderAssembled() {
+            assembledContainer.innerHTML = '';
+            if (assembled.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'assembled-empty';
+                empty.textContent = 'Нажимайте на фрагменты слева — они появятся здесь в порядке выбора.';
+                assembledContainer.appendChild(empty);
+                return;
+            }
+            assembled.forEach(part => {
+                const chip = document.createElement('div');
+                chip.className = 'assembled-chip';
+                const display = part.text === '' ? '&nbsp;' : escapeHtml(part.text);
+                chip.innerHTML = '<span class="chip-num">' + part.num + '</span>' + display;
+                chip.addEventListener('click', () => removePart(part.num));
+                assembledContainer.appendChild(chip);
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        /* ---------- Логика ---------- */
+        function addPart(num) {
+            if (usedNums.has(num)) return;
+            const part = currentTask.parts.find(p => p.num === num);
+            if (!part) return;
+            usedNums.add(num);
+            assembled.push(part);
+            renderParts();
+            renderAssembled();
+        }
+
+        function removePart(num) {
+            const idx = assembled.findIndex(p => p.num === num);
+            if (idx === -1) return;
+            assembled.splice(idx, 1);
+            usedNums.delete(num);
+            renderParts();
+            renderAssembled();
+        }
+
+        function setFeedback(type, html) {
+            feedback.className = 'feedback ' + type;
+            feedback.innerHTML = html;
+        }
+
+        function checkAnswer() {
+            const raw = answerInput.value.trim();
+            if (!raw) {
+                setFeedback('incorrect', 'Введите ответ — последовательность цифр.');
+                return;
+            }
+            if (!/^[0-9]+$/.test(raw)) {
+                setFeedback('incorrect', 'Ответ должен состоять только из цифр.');
+                return;
+            }
+
+            const userSeq = raw.split('').map(Number);
+            const correct = currentTask.correctOrder;
+
+            if (userSeq.length !== correct.length) {
+                setFeedback('incorrect',
+                    'Неверно. Вы указали <b>' + escapeHtml(raw) + '</b> ' +
+                    '(' + userSeq.length + ' цифр), а в адресе ' + correct.length + ' фрагментов. ' +
+                    'Правильная последовательность: <b>' + correct.join('') + '</b>.');
+                return;
+            }
+
+            const match = userSeq.every((v, i) => v === correct[i]);
+            if (match) {
+                setFeedback('correct',
+                    'Верно. Последовательность <b>' + escapeHtml(raw) + '</b> ' +
+                    'соответствует правильному порядку фрагментов адреса.');
+            } else {
+                setFeedback('incorrect',
+                    'Неверно. Вы указали <b>' + escapeHtml(raw) + '</b>, ' +
+                    'правильная последовательность: <b>' + correct.join('') + '</b>. ' +
+                    'Разбор смотрите в разделе «Решение».');
+            }
+        }
+
+        function showSolution() {
+            const orderStr = currentTask.correctOrder.join('');
+            const listItems = [...currentTask.parts]
+                .sort((a, b) => a.num - b.num)
+                .map(p => {
+                    const mark = p.correct ? '✔' : '✘ (лишний)';
+                    const display = p.text === '' ? '&nbsp;' : escapeHtml(p.text);
+                    return '<li><b>' + p.num + '</b> ' + mark + ' — ' + display + '</li>';
+                })
+                .join('');
+
+            setFeedback('solution',
+                '<div class="sol-title">Решение</div>' +
+                '<div class="sol-explain">' + currentTask.explain + '</div>' +
+                '<div class="sol-label">Эталонный адрес:</div>' +
+                '<div class="sol-answer">' + escapeHtml(currentTask.correctString) + '</div>' +
+                '<div class="sol-label">Правильная последовательность цифр:</div>' +
+                '<div class="sol-answer">' + orderStr + '</div>' +
+                '<div class="sol-label">Пояснение по фрагментам:</div>' +
+                '<ul class="sol-list">' + listItems + '</ul>'
+            );
+        }
+
+        function newTask() {
+            const factory = rand(PROTOTYPES);
+            currentTask = factory();
+
+            usedNums = new Set();
+            assembled = [];
+            answerInput.value = '';
+            prototypeBadge.textContent = 'Прототип: ' + currentTask.prototypeName;
+            taskDesc.innerHTML = currentTask.desc;
+
+            renderParts();
+            renderAssembled();
+            setFeedback('neutral', 'Выберите фрагменты адреса слева, затем введите последовательность цифр.');
+        }
+
+        /* ---------- Слушатели ---------- */
+        document.getElementById('checkBtn').addEventListener('click', checkAnswer);
+        document.getElementById('solutionBtn').addEventListener('click', showSolution);
+        document.getElementById('newTaskBtn').addEventListener('click', newTask);
+        answerInput.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                checkAnswer();
+            }
+        });
+
+        /* ---------- Старт ---------- */
+        initTheme();
+        newTask();
+    })();
+</script>
+</body>
+</html>
