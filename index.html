@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Разработай автономный HTML-файл (HTML + CSS + JS в одном файле) для отработки задания №7 ОГЭ по информатике.
+    <!-- Разработай две связанные веб-страницы для отработки заданий ОГЭ по информатике и предоставь их полный исходный код. Каждая страница — автономный HTML-файл со встроенными CSS и JavaScript, без внешних зависимостей и сборки, пригодный для GitHub Pages.
 
-Задание. Генерируй условие и список фрагментов адреса (URL или IP), закодированных цифрами 1…N. Ученик вводит последовательность цифр — правильный порядок фрагментов.
+Структура. Две страницы: index.html — задание №7 «Адресация в сети Интернет», task1.html — задание №1 «Количество информации. Поиск информации». В шапке каждой страницы рядом с переключателем темы должна быть кнопка перехода на соседнюю страницу: на задании №7 — кнопка 📘, ведущая на task1.html; на задании №1 — кнопка 📁, ведущая на index.html. Кнопки оформлены так же, как переключатель темы.
 
-Прототипы (4 штуки, без почты и без лишних фрагментов):
+Задание №7. Генерируется условие про доступ к файлу или про IP-адрес. Дан список фрагментов адреса, закодированных цифрами от 1 до N. Ученик вводит последовательность цифр, кодирующую адрес. Реализуй 4 прототипа по мотивам ФИПИ:
 
-URL с мелким дроблением: протокол, ://, сервер, .tld, /, имя файла, расширение — 7 частей.
+URL-адрес с мелким дроблением: протокол, ://, сервер, .tld, /, имя файла, расширение — 7 фрагментов (аналог №18037).
 
-IP-адрес: 4 числа, одно с ведущей точкой.
+IP-адрес: 4 числа, одно с ведущей точкой (аналог №538, №498).
 
-URL с протоколом — 7 частей (аналог №1028).
+URL с протоколом — 7 фрагментов (аналог №1028).
 
-URL с каталогом — 8 частей с двумя слэшами (аналог №37529).
+URL с каталогом — 8 фрагментов с двумя слэшами (аналог №37529).
 
-Рандомизация. Слова (сервер, домен, файл, расширение, протокол) выбирай из списков. Номера фрагментов перемешивай, чтобы ответ никогда не был 12345….
+Задания на электронную почту и прототипы с лишними фрагментами не включать. Количество фрагментов — от 4 до 8, дробление атомарное (://, /, .tld, расширение — отдельные фрагменты). Названия файлов, серверов, доменов, протоколов и расширений каждый раз меняются, но берутся из заданных списков. Номера фрагментов перемешиваются, чтобы ответ никогда не был 12345….
 
-Интерфейс. Слева — пронумерованные фрагменты, клик переносит в центр. В центре адрес собирается без номеров — как цельная строка URL, соседние чипы сливаются. Снизу — поле ответа (цифры без пробелов) и кнопки «Проверить», «Решение», «Новое задание».
+Интерфейс: сверху условие, слева — пронумерованные фрагменты, по клику переносятся в центр. В центре собранный адрес отображается как единая цельная строка URL без номеров; чипы без фона, рамок и зазоров, при наведении подсвечиваются, при клике возвращают фрагмент обратно. Снизу — поле ответа (цифры без пробелов) и кнопки «Проверить», «Решение», «Новое задание».
 
-Решение — разбор в стиле ФИПИ: правило формирования адреса, эталонный адрес, правильная последовательность цифр, пояснение по каждому фрагменту.
+Проверка: пустой ответ — «Введите ответ»; не цифры — «Ответ должен состоять только из цифр»; несовпадение длины — сообщение с указанием количества цифр и правильной последовательности; неверный порядок — сообщение с правильной последовательностью; верный — подтверждение.
 
-Оформление — официальный стиль ОГЭ, тёмная тема с переключателем (сохранение в localStorage), страница растянута по ширине. Без placeholder и подсказок. Сообщения об ошибке — обычным блочным текстом.
+Раздел «Решение»: правило формирования адреса в стиле ФИПИ, эталонный адрес, правильная последовательность цифр, пояснение по каждому фрагменту.
 
-Код должен работать как один index.html и подходить для GitHub Pages.-->
+Задание №1. Генерируется условие одного из 4 типов. Ответ — число или слово, поэтому поле ввода без inputmode="numeric".
+
+Поиск по запросу: таблица с количеством страниц по A, B, A & B; найти A | B по формуле включений-исключений.
+
+Три множества: таблица с тремя словами и попарными пересечениями; найти A | B | C.
+
+Логическая задача: 4 города, 4 реки, условия; определить реку для заданного города.
+
+Перебор слов: сколько слов заданной длины можно составить из набора букв в алфавитном порядке.
+
+Списки слов вынести в объект WORDS по категориям: города, реки, имена, мебель, животные, профессии, страны, цвета, спорт, школьные предметы. Каждый прототип случайно выбирает категорию.
+
+Оформление — как на странице задания №7: сверху условие (таблицы разметкой <table>), под ним вопрос, ниже поле ввода и кнопки «Проверить», «Решение», «Новое задание». Проверка без учёта регистра: пустой — «Введите ответ»; неверный — с указанием правильного ответа; верный — подтверждение. «Решение» содержит объяснение и правильный ответ.
+
+Оформление обеих страниц. Тёмная тема с переключателем в шапке, сохранение в localStorage с разными ключами (oge7-theme и oge1-theme), по умолчанию — системная тема. Аккуратный современный вид без лишней декоративности, max-width: 1400px. Без placeholder и без подсказок вида «💡 клик по чипу в центре — вернуть часть обратно». Тексты — в нейтральном официальном стиле.
+
+-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ОГЭ информатика · Задание 7</title>
+    <title>ОГЭ информатика · Задание 1</title>
     <style>
         :root {
             --bg: #eef1f5;
@@ -42,12 +58,6 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             --accent-hover: #23497a;
             --accent-soft: #eaf1fb;
             --accent-border: #9ab8dc;
-            --part-bg: #ffffff;
-            --part-border: #d5dee9;
-            --part-hover-bg: #edf3fb;
-            --part-hover-border: #8faed0;
-            --part-used-bg: #eef1f5;
-            --part-used-border: #cfd8e3;
             --input-bg: #ffffff;
             --input-border: #c2cfe0;
             --input-focus: #4a78b0;
@@ -69,7 +79,6 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             --feedback-solution-text: #46347a;
             --feedback-solution-border: #cec0ec;
             --shadow-app: 0 6px 24px rgba(0, 0, 0, 0.08);
-            --shadow-chip: 0 1px 3px rgba(20, 40, 80, 0.06);
             --header-gradient: linear-gradient(90deg, #2f5c96 0%, #4a78b0 100%);
         }
 
@@ -87,12 +96,6 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             --accent-hover: #7aa7e6;
             --accent-soft: #223349;
             --accent-border: #3f5f8a;
-            --part-bg: #223043;
-            --part-border: #2f4056;
-            --part-hover-bg: #2b3d55;
-            --part-hover-border: #4f7ab0;
-            --part-used-bg: #1b2534;
-            --part-used-border: #2a374a;
             --input-bg: #16202d;
             --input-border: #33465f;
             --input-focus: #5b8fd6;
@@ -114,7 +117,6 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             --feedback-solution-text: #c3b3ec;
             --feedback-solution-border: #4b3f7a;
             --shadow-app: 0 8px 30px rgba(0, 0, 0, 0.5);
-            --shadow-chip: 0 1px 3px rgba(0, 0, 0, 0.3);
             --header-gradient: linear-gradient(90deg, #23497a 0%, #3b6ea8 100%);
         }
 
@@ -199,6 +201,7 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
         }
 
         .theme-toggle:hover {
@@ -217,7 +220,7 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             border-radius: 6px;
             margin-bottom: 26px;
             font-size: 15px;
-            line-height: 1.65;
+            line-height: 1.75;
             color: var(--text);
         }
 
@@ -230,146 +233,35 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             letter-spacing: 0.8px;
         }
 
-        .task-statement .task-desc { margin-bottom: 10px; }
-        .task-statement .task-question { font-weight: 500; }
-
-        .work-area {
-            display: flex;
-            gap: 28px;
-            flex-wrap: wrap;
+        .task-statement .task-question {
+            font-weight: 500;
+            margin-top: 10px;
         }
 
-        .parts-panel {
-            flex: 1 1 360px;
-            min-width: 300px;
-            background: var(--panel-bg);
-            border: 1px solid var(--panel-border);
-            border-radius: 8px;
-            padding: 18px 18px 22px;
-        }
-
-        .parts-panel h3,
-        .build-zone h3 {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-soft);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin: 0 0 14px 0;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--panel-divider);
-        }
-
-        .part-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 11px 14px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            background: var(--part-bg);
-            border: 1px solid var(--part-border);
-            cursor: pointer;
-            user-select: none;
-            box-shadow: var(--shadow-chip);
-        }
-
-        .part-row:hover {
-            background: var(--part-hover-bg);
-            border-color: var(--part-hover-border);
-            transform: translateX(2px);
-        }
-
-        .part-row.used {
-            opacity: 0.4;
-            background: var(--part-used-bg);
-            border-color: var(--part-used-border);
-            cursor: default;
-            pointer-events: none;
-            box-shadow: none;
-        }
-
-        .part-number {
-            font-weight: 700;
-            color: var(--accent);
-            font-size: 15px;
-            min-width: 26px;
-            text-align: right;
-        }
-
-        .part-text {
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 15px;
-            color: var(--text);
-            word-break: break-all;
-        }
-
-        .build-panel {
-            flex: 2 1 500px;
-            min-width: 320px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .build-zone {
-            background: var(--panel-bg);
-            border: 1px solid var(--panel-border);
-            border-radius: 8px;
-            padding: 18px;
-            min-height: 130px;
-        }
-
-        /* Собранный адрес — единая строка без номеров и без зазоров */
-        .assembled-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0;
-            padding: 12px 14px;
-            background: var(--input-bg);
-            border: 1px solid var(--panel-border);
-            border-radius: 6px;
-            min-height: 46px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 16px;
-            color: var(--text);
-            word-break: break-all;
-        }
-
-        .assembled-empty {
-            color: var(--text-muted);
+        .task-statement table {
+            border-collapse: collapse;
+            margin: 12px 0;
             font-size: 14px;
-            font-style: italic;
-            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
         }
 
-        /* Чип без номера: соседние фрагменты сливаются в единый адрес */
-        .assembled-chip {
-            background: transparent;
-            border: none;
-            padding: 2px 0;
-            margin: 0;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 16px;
-            color: var(--text);
-            cursor: pointer;
-            display: inline;
-            line-height: 1.4;
-            border-radius: 3px;
-            transition: background 0.1s, color 0.1s;
+        .task-statement table th,
+        .task-statement table td {
+            border: 1px solid var(--panel-border);
+            padding: 8px 14px;
+            text-align: left;
         }
 
-        .assembled-chip:hover {
-            background: var(--accent-soft);
-            color: var(--accent);
+        .task-statement table th {
+            background: var(--panel-bg);
+            font-weight: 600;
         }
 
         .answer-block {
             background: var(--panel-bg);
             border: 1px solid var(--panel-border);
             border-radius: 8px;
-            padding: 18px 20px;
+            padding: 22px 24px;
+            max-width: 720px;
         }
 
         .answer-block label {
@@ -377,14 +269,7 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             font-size: 14px;
             font-weight: 600;
             color: var(--text-soft);
-            margin-bottom: 10px;
-        }
-
-        .answer-block .hint {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-left: 4px;
+            margin-bottom: 12px;
         }
 
         .answer-input {
@@ -392,9 +277,7 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             padding: 12px 16px;
             border-radius: 6px;
             border: 1.5px solid var(--input-border);
-            font-size: 18px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            letter-spacing: 6px;
+            font-size: 17px;
             background: var(--input-bg);
             color: var(--text);
             outline: none;
@@ -521,20 +404,9 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             margin-top: 4px;
         }
 
-        .feedback.solution .sol-list {
-            margin: 8px 0 0 0;
-            padding-left: 20px;
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        .feedback.solution .sol-list li { margin-bottom: 2px; }
-        .feedback.solution .sol-list b { color: var(--accent); }
-
         @media (max-width: 820px) {
             body { padding: 16px; }
             .header, .content { padding-left: 22px; padding-right: 22px; }
-            .work-area { flex-direction: column; }
         }
     </style>
 </head>
@@ -543,11 +415,12 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
 
     <div class="header">
         <div class="header-left">
-            <h1>ОГЭ по информатике · Задание 7</h1>
-            <div class="subtitle">Адресация в сети Интернет</div>
+            <h1>ОГЭ по информатике · Задание 1</h1>
+            <div class="subtitle">Количество информации. Поиск информации</div>
         </div>
         <div class="header-right">
             <div class="prototype-badge" id="prototypeBadge">Прототип: —</div>
+            <a href="index.html" class="theme-toggle" title="Задание №7 ОГЭ" aria-label="Перейти к заданию №7">📁</a>
             <button class="theme-toggle" id="themeToggle" title="Переключить тему" aria-label="Переключить тему">🌙</button>
         </div>
     </div>
@@ -556,68 +429,69 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
 
         <div class="task-statement">
             <div class="task-title">Условие</div>
-            <div class="task-desc" id="taskDesc">
-                Доступ к файлу осуществляется по протоколу, указанному в условии.
+            <div id="taskDesc">Загрузка задания…</div>
+            <div class="task-question" id="taskQuestion"></div>
+        </div>
+
+        <div class="answer-block">
+            <label>Ваш ответ:</label>
+            <input type="text" id="answerInput" class="answer-input" autocomplete="off" spellcheck="false">
+
+            <div class="actions">
+                <button class="btn btn-primary" id="checkBtn">Проверить</button>
+                <button class="btn btn-secondary" id="solutionBtn">Решение</button>
+                <button class="btn btn-secondary" id="newTaskBtn">Новое задание</button>
             </div>
-            <div class="task-question">
-                Фрагменты адреса закодированы цифрами от 1 до N. Запишите последовательность этих цифр, кодирующую адрес в сети Интернет.
+
+            <div id="feedback" class="feedback neutral">
+                Введите ответ и нажмите «Проверить».
             </div>
         </div>
 
-        <div class="work-area">
-
-            <div class="parts-panel">
-                <h3>Фрагменты адреса</h3>
-                <div id="partsList"></div>
-            </div>
-
-            <div class="build-panel">
-
-                <div class="build-zone">
-                    <h3>Собранный адрес</h3>
-                    <div id="assembledContainer" class="assembled-container">
-                        <div class="assembled-empty" id="assembledEmpty">
-                            Нажимайте на фрагменты слева — они появятся здесь в порядке выбора.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="answer-block">
-                    <label>
-                        Ваш ответ:
-                        <span class="hint">(последовательность цифр без пробелов)</span>
-                    </label>
-                    <input type="text" id="answerInput" class="answer-input" autocomplete="off" spellcheck="false" inputmode="numeric">
-
-                    <div class="actions">
-                        <button class="btn btn-primary" id="checkBtn">Проверить</button>
-                        <button class="btn btn-secondary" id="solutionBtn">Решение</button>
-                        <button class="btn btn-secondary" id="newTaskBtn">Новое задание</button>
-                    </div>
-
-                    <div id="feedback" class="feedback neutral">
-                        Выберите фрагменты адреса слева, затем введите последовательность цифр.
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
 </div>
 
 <script>
     (function () {
-        /* ---------- Списки слов ---------- */
-        const PROTOCOLS = ['https', 'http', 'ftp'];
-        const SERVERS = ['school', 'lyceum', 'university', 'college', 'gymnasium', 'academy', 'institute', 'campus'];
-        const TLDS = ['.ru', '.com', '.org', '.net', '.edu', '.gov'];
-        const FILENAMES = ['report', 'task', 'lesson', 'exam', 'notes', 'summary', 'project', 'schedule', 'plan', 'result'];
-        const EXTENSIONS = ['.html', '.pdf', '.docx', '.txt', '.jpg', '.png', '.xml', '.json'];
+        /* ============================================================
+         *  СПИСКИ СЛОВ ДЛЯ РАЗНООБРАЗИЯ
+         *  ============================================================ */
+        const WORDS = {
+            cities:  ['Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург', 'Казань',
+                      'Нижний Новгород', 'Челябинск', 'Самара', 'Омск', 'Ростов-на-Дону',
+                      'Уфа', 'Красноярск', 'Воронеж', 'Пермь', 'Волгоград'],
+            rivers:  ['Волга', 'Обь', 'Енисей', 'Лена', 'Амур',
+                      'Дон', 'Кубань', 'Урал', 'Ока', 'Кама',
+                      'Днепр', 'Нева', 'Днестр', 'Печора', 'Северная Двина'],
+            names:   ['Анна', 'Борис', 'Виктор', 'Галина', 'Дмитрий',
+                      'Елена', 'Жанна', 'Игорь', 'Ксения', 'Леонид',
+                      'Мария', 'Николай', 'Ольга', 'Павел', 'Роман'],
+            furniture: ['стол', 'стул', 'шкаф', 'диван', 'кресло',
+                        'кровать', 'тумба', 'полка', 'комод', 'табурет',
+                        'кресло-кровать', 'пуф', 'секретер', 'буфет', 'этажерка'],
+            animals: ['лев', 'тигр', 'медведь', 'волк', 'лиса',
+                      'заяц', 'олень', 'лось', 'рысь', 'барсук',
+                      'белка', 'ёж', 'крот', 'бобр', 'выдра'],
+            professions: ['врач', 'учитель', 'инженер', 'строитель', 'повар',
+                          'водитель', 'пилот', 'юрист', 'экономист', 'программист',
+                          'художник', 'музыкант', 'актёр', 'журналист', 'учёный'],
+            countries: ['Россия', 'Германия', 'Франция', 'Италия', 'Испания',
+                        'Португалия', 'Нидерланды', 'Бельгия', 'Швеция', 'Норвегия',
+                        'Финляндия', 'Дания', 'Польша', 'Чехия', 'Австрия'],
+            colors: ['красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой',
+                     'синий', 'фиолетовый', 'белый', 'чёрный', 'серый',
+                     'коричневый', 'розовый', 'бирюзовый', 'бежевый', 'золотой'],
+            sports: ['футбол', 'хоккей', 'теннис', 'баскетбол', 'волейбол',
+                     'плавание', 'бокс', 'борьба', 'лёгкая атлетика', 'гимнастика',
+                     'шахматы', 'лыжи', 'коньки', 'гребля', 'фехтование'],
+            subjects: ['математика', 'русский язык', 'физика', 'химия', 'биология',
+                       'история', 'география', 'литература', 'информатика', 'английский язык',
+                       'немецкий язык', 'французский язык', 'обществознание', 'ОБЖ', 'технология']
+        };
 
         const rand = arr => arr[Math.floor(Math.random() * arr.length)];
         const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-        /* ---------- Утилиты ---------- */
         function shuffle(arr) {
             const a = [...arr];
             for (let i = a.length - 1; i > 0; i--) {
@@ -627,175 +501,194 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
             return a;
         }
 
-        /* ---------- Построение задания ---------- */
-        function buildTask(fragments, correct, prototypeName, desc, explain) {
-            const numbered = shuffle([...fragments]);
-            numbered.forEach((p, i) => { p.num = i + 1; });
-
-            const correctFragments = numbered
-                .slice()
-                .sort((a, b) => a.order - b.order);
-            const correctOrder = correctFragments.map(p => p.num);
-
-            return {
-                parts: numbered,
-                correctOrder: correctOrder,
-                correctString: correct,
-                prototypeName: prototypeName,
-                desc: desc,
-                explain: explain
-            };
+        function pickNUnique(arr, n) {
+            const copy = shuffle(arr);
+            return copy.slice(0, n);
         }
 
-        /* ---------- Прототип 1. URL-адрес (7 фрагментов) ---------- */
+        /* ============================================================
+         *  ПРОТОТИПЫ ЗАДАНИЯ №1
+         *  ============================================================ */
+
+        /* Прототип 1.
+         * Поиск страниц, где встречаются оба слова.
+         * Формат: дана таблица запросов и количество найденных страниц.
+         * Нужно найти количество страниц по новому запросу.
+         */
         function proto1() {
-            const p = rand(PROTOCOLS);
-            const s = rand(SERVERS);
-            const t = rand(TLDS);
-            const fname = rand(FILENAMES);
-            const ext = rand(EXTENSIONS);
+            const cat = rand(['cities', 'rivers', 'animals', 'furniture']);
+            const words = pickNUnique(WORDS[cat], 3);
+            const [A, B, C] = words;
 
-            const fragments = [
-                { text: p,     order: 1 },
-                { text: '://', order: 2 },
-                { text: s,     order: 3 },
-                { text: t,     order: 4 },
-                { text: '/',   order: 5 },
-                { text: fname, order: 6 },
-                { text: ext,   order: 7 }
-            ];
+            // N(A) = X, N(B) = Y, N(A & B) = Z, найти N(A | B)
+            const both = randInt(20, 80);
+            const onlyA = randInt(30, 100);
+            const onlyB = randInt(30, 100);
+            const nA = both + onlyA;
+            const nB = both + onlyB;
+            const nAorB = both + onlyA + onlyB;
 
-            const correct = `${p}://${s}${t}/${fname}${ext}`;
-            const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${s}${t}</b>, ` +
-                         `осуществляется по протоколу <b>${p}</b>. Фрагменты адреса файла закодированы ` +
-                         `цифрами от 1 до ${fragments.length}. Запишите последовательность этих цифр, ` +
-                         `кодирующую адрес указанного файла в сети Интернет.`;
-            const explain = `Напомним, как формируется адрес в сети Интернет. Сначала указывается протокол, ` +
-                            `потом «://», потом сервер, затем «/», название файла указывается в конце. ` +
-                            `Таким образом, адрес будет следующим: <b>${correct}</b>.`;
+            const table = `
+                <table>
+                    <tr><th>Запрос</th><th>Найдено страниц (в тысячах)</th></tr>
+                    <tr><td>${A}</td><td>${nA}</td></tr>
+                    <tr><td>${B}</td><td>${nB}</td></tr>
+                    <tr><td>${A} &amp; ${B}</td><td>${both}</td></tr>
+                </table>
+            `;
 
-            return buildTask(fragments, correct, 'URL-адрес', desc, explain);
+            const desc = `В языке запросов поискового сервера для обозначения логической операции «ИЛИ» ` +
+                         `используется символ «|», а для логической операции «И» — символ «&amp;».` +
+                         table;
+            const question = `Какое количество страниц (в тысячах) будет найдено по запросу ` +
+                             `<b>${A} | ${B}</b>?`;
+            const answer = String(nAorB);
+            const explain = `По формуле включений-исключений: N(A | B) = N(A) + N(B) − N(A & B) = ` +
+                            `${nA} + ${nB} − ${both} = <b>${nAorB}</b> (тысяч страниц).`;
+
+            return { desc, question, answer, explain, prototypeName: 'Поиск по запросу' };
         }
 
-        /* ---------- Прототип 2. IP-адрес (4 фрагмента) ---------- */
+        /* Прототип 2.
+         * Даны два слова и таблица с количеством страниц.
+         * Найти, сколько страниц найдено по запросу «A & B & C».
+         */
         function proto2() {
-            const nums = [];
-            while (nums.length < 4) {
-                const n = randInt(0, 255);
-                if (!nums.includes(n)) nums.push(n);
-            }
-            const lastIdx = randInt(0, 3);
-            const dotIdx = (lastIdx + 1) % 4;
+            const cat = rand(['cities', 'rivers', 'colors', 'sports']);
+            const words = pickNUnique(WORDS[cat], 3);
+            const [A, B, C] = words;
 
-            const fragments = [];
-            nums.forEach((n, i) => {
-                let text = String(n);
-                if (i === dotIdx) text = '.' + n;
-                fragments.push({ text: text, order: i + 1 });
-            });
+            const nA = randInt(120, 300);
+            const nB = randInt(120, 300);
+            const nC = randInt(120, 300);
+            const nAB = randInt(20, 60);
+            const nAC = randInt(20, 60);
+            const nBC = randInt(20, 60);
+            const nABC = randInt(5, 15);
 
-            const correct = nums.join('.');
-            const desc = `На месте происшествия обнаружены четыре обрывка бумаги. Следствие установило, ` +
-                         `что на них записаны фрагменты одного IP-адреса. Фрагменты обозначены цифрами ` +
-                         `от 1 до 4. Восстановите IP-адрес. В ответе укажите последовательность цифр, ` +
-                         `обозначающих фрагменты, в порядке, соответствующем IP-адресу.`;
-            const explain = `IP-адрес представляет собой четыре разделённых точками числа, каждое из которых ` +
-                            `не больше 255. Фрагмент, начинающийся с точки, не может стоять первым — иначе ` +
-                            `точка окажется в начале адреса. Фрагмент без точки должен стоять первым или ` +
-                            `после фрагмента с точкой. Правильный адрес: <b>${correct}</b>.`;
+            const table = `
+                <table>
+                    <tr><th>Запрос</th><th>Найдено страниц (в тысячах)</th></tr>
+                    <tr><td>${A}</td><td>${nA}</td></tr>
+                    <tr><td>${B}</td><td>${nB}</td></tr>
+                    <tr><td>${C}</td><td>${nC}</td></tr>
+                    <tr><td>${A} &amp; ${B}</td><td>${nAB}</td></tr>
+                    <tr><td>${A} &amp; ${C}</td><td>${nAC}</td></tr>
+                    <tr><td>${B} &amp; ${C}</td><td>${nBC}</td></tr>
+                    <tr><td>${A} &amp; ${B} &amp; ${C}</td><td>${nABC}</td></tr>
+                </table>
+            `;
 
-            return buildTask(fragments, correct, 'IP-адрес', desc, explain);
+            const desc = `В языке запросов поискового сервера для обозначения логической операции «ИЛИ» ` +
+                         `используется символ «|», а для логической операции «И» — символ «&amp;».` +
+                         table;
+            const question = `Какое количество страниц (в тысячах) будет найдено по запросу ` +
+                             `<b>${A} | ${B} | ${C}</b>?`;
+            // По формуле включений-исключений для трёх множеств:
+            const nAorBorC = nA + nB + nC - nAB - nAC - nBC + nABC;
+            const answer = String(nAorBorC);
+            const explain = `По формуле включений-исключений для трёх множеств: ` +
+                            `N(A | B | C) = N(A) + N(B) + N(C) − N(A & B) − N(A & C) − N(B & C) + N(A & B & C) = ` +
+                            `${nA} + ${nB} + ${nC} − ${nAB} − ${nAC} − ${nBC} + ${nABC} = <b>${nAorBorC}</b> (тысяч страниц).`;
+
+            return { desc, question, answer, explain, prototypeName: 'Три множества' };
         }
 
-        /* ---------- Прототип 3. URL с протоколом и слэшем (7 фрагментов) ---------- */
+        /* Прототип 3.
+         * Логическая задача: «В каком городе и какая река протекает?»
+         * Даны варианты городов и рек, даны условия. Нужно найти ответ.
+         */
         function proto3() {
-            const p = rand(PROTOCOLS);
-            const s = 'magazin';
-            const t = rand(['.com', '.ru', '.org', '.net']);
-            const fname = rand(['kassa', 'cassa', 'folder', 'summa', 'check', 'order']);
-            const ext = rand(['.xls', '.xlsx', '.pdf', '.doc']);
+            const cities = pickNUnique(WORDS.cities, 4);
+            const rivers = pickNUnique(WORDS.rivers, 4);
+            // Правильная пара: city[0] — river[0]
+            const [cityA, cityB, cityC, cityD] = cities;
+            const [riverA, riverB, riverC, riverD] = rivers;
 
-            const fragments = [
-                { text: p,     order: 1 },
-                { text: '://', order: 2 },
-                { text: s,     order: 3 },
-                { text: t,     order: 4 },
-                { text: '/',   order: 5 },
-                { text: fname, order: 6 },
-                { text: ext,   order: 7 }
-            ];
+            const desc = `Учитель написал на доске четыре города: <b>${cityA}</b>, <b>${cityB}</b>, ` +
+                         `<b>${cityC}</b>, <b>${cityD}</b> — и четыре реки: <b>${riverA}</b>, ` +
+                         `<b>${riverB}</b>, <b>${riverC}</b>, <b>${riverD}</b>. ` +
+                         `Известно, что в каждом городе протекает ровно одна река, и каждая река ` +
+                         `протекает ровно в одном городе. Также известно, что река <b>${riverB}</b> ` +
+                         `протекает в городе <b>${cityB}</b>, а река <b>${riverA}</b> — не в городе ` +
+                         `<b>${cityB}</b>. В городе <b>${cityD}</b> протекает река <b>${riverD}</b>.`;
+            const question = `Какая река протекает в городе <b>${cityA}</b>? В ответе укажите название реки.`;
+            const answer = riverA;
+            const explain = `Из условия: река ${riverB} — в городе ${cityB}; река ${riverD} — в городе ` +
+                            `${cityD}; река ${riverA} — не в городе ${cityB}. Значит, для города ${cityA} ` +
+                            `подходит река ${riverA}, а остальные распределяются между ${cityC} и ${cityB}. ` +
+                            `Ответ: <b>${riverA}</b>.`;
 
-            const correct = `${p}://${s}${t}/${fname}${ext}`;
-            const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${s}${t}</b>, ` +
-                         `осуществляется по протоколу <b>${p}</b>. Фрагменты адреса файла закодированы ` +
-                         `цифрами от 1 до ${fragments.length}. Запишите последовательность этих цифр, ` +
-                         `кодирующую адрес указанного файла в сети Интернет.`;
-            const explain = `Напомним, как формируется адрес в сети Интернет. Сначала указывается протокол, ` +
-                            `потом «://», потом сервер, затем «/», название файла указывается в конце. ` +
-                            `Таким образом, адрес будет следующим: <b>${correct}</b>.`;
-
-            return buildTask(fragments, correct, 'URL с протоколом', desc, explain);
+            return { desc, question, answer, explain, prototypeName: 'Логическая задача' };
         }
 
-        /* ---------- Прототип 4. URL с каталогом (8 фрагментов) ---------- */
+        /* Прототип 4.
+         * Количество слов заданной длины из заданного алфавита.
+         * Например: все 4-буквенные слова из букв А, Б, В, Г, идущие в алфавитном порядке.
+         */
         function proto4() {
-            const p = rand(PROTOCOLS);
-            const srv = rand(['web', 'host', 'server', 'site', 'portal']);
-            const t1 = rand(['.txt', '.info', '.site', '.data', '.cloud']);
-            const pathName = rand(['portal', 'index', 'main', 'home', 'start']);
-            const fname = rand(['page', 'file', 'doc', 'task']);
-            const ext = rand(['.html', '.htm', '.php', '.asp']);
-
-            const fragments = [
-                { text: p,               order: 1 },
-                { text: '://',           order: 2 },
-                { text: srv,             order: 3 },
-                { text: t1,              order: 4 },
-                { text: '/',             order: 5 },
-                { text: pathName,        order: 6 },
-                { text: '/',             order: 7 },
-                { text: fname + ext,     order: 8 }
+            const subjects = pickNUnique(WORDS.subjects, 1);
+            const letterPools = [
+                ['А', 'Б', 'В', 'Г'],
+                ['А', 'Б', 'В'],
+                ['А', 'Б', 'В', 'Г', 'Д'],
+                ['К', 'Л', 'М', 'Н'],
+                ['П', 'Р', 'С', 'Т']
             ];
+            const pool = rand(letterPools);
+            const n = randInt(3, 4);
+            const sorted = [...pool].sort();
+            const first = sorted[0];
+            const last = sorted[sorted.length - 1];
 
-            const correct = `${p}://${srv}${t1}/${pathName}/${fname}${ext}`;
-            const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере ` +
-                         `<b>${srv}${t1}</b>, осуществляется по протоколу <b>${p}</b>. Файл находится ` +
-                         `в каталоге <b>${pathName}</b>. Фрагменты адреса закодированы цифрами от 1 до ` +
-                         `${fragments.length}. Запишите последовательность цифр, кодирующую адрес этого ` +
-                         `файла в сети Интернет.`;
-            const explain = `Напомним, как формируется адрес в сети Интернет. Сначала указывается протокол, ` +
-                            `потом «://», потом сервер, затем «/», каталог, снова «/», и название файла. ` +
-                            `Таким образом, адрес будет следующим: <b>${correct}</b>.`;
+            // Число слов длины n в алфавитном порядке из |pool| букв = C(|pool| + n - 1, n)
+            function comb(a, b) {
+                if (b < 0 || b > a) return 0;
+                let num = 1, den = 1;
+                for (let i = 1; i <= b; i++) {
+                    num *= a - i + 1;
+                    den *= i;
+                }
+                return num / den;
+            }
+            const total = comb(pool.length + n - 1, n);
 
-            return buildTask(fragments, correct, 'URL с каталогом', desc, explain);
+            const desc = `Сколько существует различных слов длины <b>${n}</b>, которые можно составить ` +
+                         `из букв <b>${pool.join(', ')}</b>, если буквы в слове должны идти в алфавитном ` +
+                         `порядке (например, <b>${first}${first}${first}</b> или <b>${first}${sorted[1]}${last}</b>)? ` +
+                         `Слова длины ${n}, все буквы различны или могут повторяться, но не убывают.`;
+            const question = `В ответе укажите число.`;
+            const answer = String(total);
+            const explain = `Число неубывающих последовательностей длины ${n} из ${pool.length} букв ` +
+                            `равно числу сочетаний с повторениями: C(${pool.length} + ${n} − 1, ${n}) = ` +
+                            `C(${pool.length + n - 1}, ${n}) = <b>${total}</b>.`;
+
+            return { desc, question, answer, explain, prototypeName: 'Перебор слов' };
         }
 
         const PROTOTYPES = [proto1, proto2, proto3, proto4];
 
         /* ---------- Состояние ---------- */
         let currentTask = null;
-        let usedNums = new Set();
-        let assembled = [];
 
         /* ---------- DOM ---------- */
-        const partsListEl = document.getElementById('partsList');
-        const assembledContainer = document.getElementById('assembledContainer');
+        const taskDescEl = document.getElementById('taskDesc');
+        const taskQuestionEl = document.getElementById('taskQuestion');
         const answerInput = document.getElementById('answerInput');
         const feedback = document.getElementById('feedback');
         const prototypeBadge = document.getElementById('prototypeBadge');
-        const taskDesc = document.getElementById('taskDesc');
         const themeToggle = document.getElementById('themeToggle');
 
         /* ---------- Тема ---------- */
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-            try { localStorage.setItem('oge7-theme', theme); } catch (e) {}
+            try { localStorage.setItem('oge1-theme', theme); } catch (e) {}
         }
 
         function initTheme() {
             let saved = null;
-            try { saved = localStorage.getItem('oge7-theme'); } catch (e) {}
+            try { saved = localStorage.getItem('oge1-theme'); } catch (e) {}
             if (saved === 'dark' || saved === 'light') {
                 applyTheme(saved);
             } else {
@@ -810,66 +703,10 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
         });
 
         /* ---------- Отрисовка ---------- */
-        function renderParts() {
-            partsListEl.innerHTML = '';
-            const sorted = [...currentTask.parts].sort((a, b) => a.num - b.num);
-            sorted.forEach(part => {
-                const row = document.createElement('div');
-                row.className = 'part-row' + (usedNums.has(part.num) ? ' used' : '');
-                row.dataset.num = part.num;
-                const display = part.text === '' ? '&nbsp;' : escapeHtml(part.text);
-                row.innerHTML =
-                    '<span class="part-number">' + part.num + ')</span>' +
-                    '<span class="part-text">' + display + '</span>';
-                row.addEventListener('click', () => addPart(part.num));
-                partsListEl.appendChild(row);
-            });
-        }
-
-        function renderAssembled() {
-            assembledContainer.innerHTML = '';
-            if (assembled.length === 0) {
-                const empty = document.createElement('div');
-                empty.className = 'assembled-empty';
-                empty.textContent = 'Нажимайте на фрагменты слева — они появятся здесь в порядке выбора.';
-                assembledContainer.appendChild(empty);
-                return;
-            }
-            assembled.forEach(part => {
-                const chip = document.createElement('span');
-                chip.className = 'assembled-chip';
-                const display = part.text === '' ? '&nbsp;' : escapeHtml(part.text);
-                chip.innerHTML = display;
-                chip.title = 'Нажмите, чтобы вернуть фрагмент ' + part.num + ' обратно';
-                chip.addEventListener('click', () => removePart(part.num));
-                assembledContainer.appendChild(chip);
-            });
-        }
-
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
-        }
-
-        /* ---------- Логика ---------- */
-        function addPart(num) {
-            if (usedNums.has(num)) return;
-            const part = currentTask.parts.find(p => p.num === num);
-            if (!part) return;
-            usedNums.add(num);
-            assembled.push(part);
-            renderParts();
-            renderAssembled();
-        }
-
-        function removePart(num) {
-            const idx = assembled.findIndex(p => p.num === num);
-            if (idx === -1) return;
-            assembled.splice(idx, 1);
-            usedNums.delete(num);
-            renderParts();
-            renderAssembled();
         }
 
         function setFeedback(type, html) {
@@ -880,73 +717,38 @@ URL с каталогом — 8 частей с двумя слэшами (ан�
         function checkAnswer() {
             const raw = answerInput.value.trim();
             if (!raw) {
-                setFeedback('incorrect', 'Введите ответ — последовательность цифр.');
+                setFeedback('incorrect', 'Введите ответ.');
                 return;
             }
-            if (!/^[0-9]+$/.test(raw)) {
-                setFeedback('incorrect', 'Ответ должен состоять только из цифр.');
-                return;
-            }
-
-            const userSeq = raw.split('').map(Number);
-            const correct = currentTask.correctOrder;
-
-            if (userSeq.length !== correct.length) {
-                setFeedback('incorrect',
-                    'Неверно. Вы указали <b>' + escapeHtml(raw) + '</b> ' +
-                    '(' + userSeq.length + ' цифр), а в адресе ' + correct.length + ' фрагментов. ' +
-                    'Правильная последовательность: <b>' + correct.join('') + '</b>.');
-                return;
-            }
-
-            const match = userSeq.every((v, i) => v === correct[i]);
-            if (match) {
-                setFeedback('correct',
-                    'Верно. Последовательность <b>' + escapeHtml(raw) + '</b> ' +
-                    'соответствует правильному порядку фрагментов адреса.');
+            const expected = String(currentTask.answer).trim();
+            const ok = raw.toLowerCase() === expected.toLowerCase();
+            if (ok) {
+                setFeedback('correct', 'Верно. Ответ: <b>' + escapeHtml(expected) + '</b>.');
             } else {
                 setFeedback('incorrect',
-                    'Неверно. Вы указали <b>' + escapeHtml(raw) + '</b>, ' +
-                    'правильная последовательность: <b>' + correct.join('') + '</b>. ' +
+                    'Неверно. Вы указали <b>' + escapeHtml(raw) + '</b>. ' +
+                    'Правильный ответ: <b>' + escapeHtml(expected) + '</b>. ' +
                     'Разбор смотрите в разделе «Решение».');
             }
         }
 
         function showSolution() {
-            const orderStr = currentTask.correctOrder.join('');
-            const listItems = [...currentTask.parts]
-                .sort((a, b) => a.num - b.num)
-                .map(p => {
-                    const display = p.text === '' ? '&nbsp;' : escapeHtml(p.text);
-                    return '<li><b>' + p.num + '</b> — ' + display + '</li>';
-                })
-                .join('');
-
             setFeedback('solution',
                 '<div class="sol-title">Решение</div>' +
                 '<div class="sol-explain">' + currentTask.explain + '</div>' +
-                '<div class="sol-label">Эталонный адрес:</div>' +
-                '<div class="sol-answer">' + escapeHtml(currentTask.correctString) + '</div>' +
-                '<div class="sol-label">Правильная последовательность цифр:</div>' +
-                '<div class="sol-answer">' + orderStr + '</div>' +
-                '<div class="sol-label">Пояснение по фрагментам:</div>' +
-                '<ul class="sol-list">' + listItems + '</ul>'
+                '<div class="sol-label">Правильный ответ:</div>' +
+                '<div class="sol-answer">' + escapeHtml(currentTask.answer) + '</div>'
             );
         }
 
         function newTask() {
             const factory = rand(PROTOTYPES);
             currentTask = factory();
-
-            usedNums = new Set();
-            assembled = [];
             answerInput.value = '';
             prototypeBadge.textContent = 'Прототип: ' + currentTask.prototypeName;
-            taskDesc.innerHTML = currentTask.desc;
-
-            renderParts();
-            renderAssembled();
-            setFeedback('neutral', 'Выберите фрагменты адреса слева, затем введите последовательность цифр.');
+            taskDescEl.innerHTML = currentTask.desc;
+            taskQuestionEl.innerHTML = currentTask.question;
+            setFeedback('neutral', 'Введите ответ и нажмите «Проверить».');
         }
 
         /* ---------- Слушатели ---------- */
