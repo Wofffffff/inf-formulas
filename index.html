@@ -297,48 +297,49 @@
             min-height: 130px;
         }
 
+        /* Собранный адрес — единая строка без номеров и без зазоров */
         .assembled-container {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 6px;
+            gap: 0;
+            padding: 12px 14px;
+            background: var(--input-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 6px;
+            min-height: 46px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 16px;
+            color: var(--text);
+            word-break: break-all;
         }
 
         .assembled-empty {
             color: var(--text-muted);
             font-size: 14px;
             font-style: italic;
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
         }
 
+        /* Чип без номера: соседние фрагменты сливаются в единый адрес */
         .assembled-chip {
-            background: var(--accent-soft);
-            border: 1px solid var(--accent-border);
-            border-radius: 5px;
-            padding: 7px 12px;
+            background: transparent;
+            border: none;
+            padding: 2px 0;
+            margin: 0;
             font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 14px;
+            font-size: 16px;
             color: var(--text);
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            box-shadow: var(--shadow-chip);
+            display: inline;
+            line-height: 1.4;
+            border-radius: 3px;
+            transition: background 0.1s, color 0.1s;
         }
 
         .assembled-chip:hover {
-            background: var(--part-hover-bg);
-            border-color: var(--part-hover-border);
-        }
-
-        .assembled-chip .chip-num {
-            display: inline-block;
-            background: var(--accent);
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 1px 6px;
-            border-radius: 3px;
-            margin-right: 6px;
-            font-family: 'Segoe UI', sans-serif;
+            background: var(--accent-soft);
+            color: var(--accent);
         }
 
         .answer-block {
@@ -587,10 +588,8 @@
         const PROTOCOLS = ['https', 'http', 'ftp'];
         const SERVERS = ['school', 'lyceum', 'university', 'college', 'gymnasium', 'academy', 'institute', 'campus'];
         const TLDS = ['.ru', '.com', '.org', '.net', '.edu', '.gov'];
-        const PATHS = ['file', 'doc', 'task', 'page', 'index', 'test', 'info', 'data', 'upload', 'download'];
         const FILENAMES = ['report', 'task', 'lesson', 'exam', 'notes', 'summary', 'project', 'schedule', 'plan', 'result'];
         const EXTENSIONS = ['.html', '.pdf', '.docx', '.txt', '.jpg', '.png', '.xml', '.json'];
-        const MAILBOXES = ['teacher', 'student', 'admin', 'user', 'manager', 'director'];
 
         const rand = arr => arr[Math.floor(Math.random() * arr.length)];
         const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -605,17 +604,13 @@
             return a;
         }
 
-        /* ---------- Построение задания ----------
-         * fragments — массив объектов { text, correct, order }
-         *   correct: true — входит в правильный ответ
-         *   order: позиция в правильном адресе (для correct=true)
-         */
+        /* ---------- Построение задания ---------- */
         function buildTask(fragments, correct, prototypeName, desc, explain) {
             const numbered = shuffle([...fragments]);
             numbered.forEach((p, i) => { p.num = i + 1; });
 
             const correctFragments = numbered
-                .filter(p => p.correct)
+                .slice()
                 .sort((a, b) => a.order - b.order);
             const correctOrder = correctFragments.map(p => p.num);
 
@@ -629,10 +624,7 @@
             };
         }
 
-        /* ---------- Прототип 1. URL-адрес (7 фрагментов) ----------
-         * Пример: ftp://school.org/test.xls
-         * Фрагменты: ftp, ://, school, .org, /, test, .xls
-         */
+        /* ---------- Прототип 1. URL-адрес (7 фрагментов) ---------- */
         function proto1() {
             const p = rand(PROTOCOLS);
             const s = rand(SERVERS);
@@ -641,13 +633,13 @@
             const ext = rand(EXTENSIONS);
 
             const fragments = [
-                { text: p,         correct: true, order: 1 },
-                { text: '://',     correct: true, order: 2 },
-                { text: s,         correct: true, order: 3 },
-                { text: t,         correct: true, order: 4 },
-                { text: '/',       correct: true, order: 5 },
-                { text: fname,     correct: true, order: 6 },
-                { text: ext,       correct: true, order: 7 }
+                { text: p,     order: 1 },
+                { text: '://', order: 2 },
+                { text: s,     order: 3 },
+                { text: t,     order: 4 },
+                { text: '/',   order: 5 },
+                { text: fname, order: 6 },
+                { text: ext,   order: 7 }
             ];
 
             const correct = `${p}://${s}${t}/${fname}${ext}`;
@@ -662,9 +654,7 @@
             return buildTask(fragments, correct, 'URL-адрес', desc, explain);
         }
 
-        /* ---------- Прототип 2. IP-адрес (4 фрагмента) ----------
-         * Четыре числа 0–255, разделённые точками. Один фрагмент — с ведущей точкой.
-         */
+        /* ---------- Прототип 2. IP-адрес (4 фрагмента) ---------- */
         function proto2() {
             const nums = [];
             while (nums.length < 4) {
@@ -678,7 +668,7 @@
             nums.forEach((n, i) => {
                 let text = String(n);
                 if (i === dotIdx) text = '.' + n;
-                fragments.push({ text: text, correct: true, order: i + 1 });
+                fragments.push({ text: text, order: i + 1 });
             });
 
             const correct = nums.join('.');
@@ -694,9 +684,7 @@
             return buildTask(fragments, correct, 'IP-адрес', desc, explain);
         }
 
-        /* ---------- Прототип 3. URL с протоколом и слэшем (7 фрагментов) ----------
-         * Пример: http://magazin.com/kassa.xls
-         */
+        /* ---------- Прототип 3. URL с протоколом и слэшем (7 фрагментов) ---------- */
         function proto3() {
             const p = rand(PROTOCOLS);
             const s = 'magazin';
@@ -705,13 +693,13 @@
             const ext = rand(['.xls', '.xlsx', '.pdf', '.doc']);
 
             const fragments = [
-                { text: p,         correct: true, order: 1 },
-                { text: '://',     correct: true, order: 2 },
-                { text: s,         correct: true, order: 3 },
-                { text: t,         correct: true, order: 4 },
-                { text: '/',       correct: true, order: 5 },
-                { text: fname,     correct: true, order: 6 },
-                { text: ext,       correct: true, order: 7 }
+                { text: p,     order: 1 },
+                { text: '://', order: 2 },
+                { text: s,     order: 3 },
+                { text: t,     order: 4 },
+                { text: '/',   order: 5 },
+                { text: fname, order: 6 },
+                { text: ext,   order: 7 }
             ];
 
             const correct = `${p}://${s}${t}/${fname}${ext}`;
@@ -726,44 +714,8 @@
             return buildTask(fragments, correct, 'URL с протоколом', desc, explain);
         }
 
-        /* ---------- Прототип 4. Электронная почта (6 фрагментов) ----------
-         * Пример: teacher@shkola1.mos.ru
-         * Фрагменты: teacher, @, shkola1, .mos, .ru — не хватает одного.
-         * Разбиваем так: teacher, @, shkola1, ., mos, .ru  → 6.
-         */
+        /* ---------- Прототип 4. URL с каталогом (8 фрагментов) ---------- */
         function proto4() {
-            const box = rand(MAILBOXES);
-            const srv = rand(['shkola', 'school', 'lyceum', 'campus']) + randInt(1, 9);
-            const d1 = rand(['mos', 'spb', 'edu', 'mail', 'list']);
-            const t = rand(TLDS);
-
-            const fragments = [
-                { text: box,       correct: true, order: 1 },
-                { text: '@',       correct: true, order: 2 },
-                { text: srv,       correct: true, order: 3 },
-                { text: '.',       correct: true, order: 4 },
-                { text: d1,        correct: true, order: 5 },
-                { text: t,         correct: true, order: 6 }
-            ];
-
-            const correct = `${box}@${srv}.${d1}${t}`;
-            const desc = `Почтовый ящик <b>${box}</b> находится на сервере <b>${srv}.${d1}${t}</b>. ` +
-                         `В таблице фрагменты адреса электронной почты закодированы цифрами от 1 до ` +
-                         `${fragments.length}. Запишите последовательность цифр, кодирующую этот адрес.`;
-            const explain = `Напомним, как формируется почтовый адрес в сети Интернет. Сначала указывается ` +
-                            `имя почтового ящика, потом «@», потом сервер, на котором находится почтовый ящик. ` +
-                            `Таким образом, искомый адрес будет следующим: <b>${correct}</b>.`;
-
-            return buildTask(fragments, correct, 'Электронная почта', desc, explain);
-        }
-
-        /* ---------- Прототип 5. URL с каталогом (8 фрагментов) ----------
-         * Пример: http://web.txt/http.com
-         * Фрагменты: http, ://, web, .txt, /, http, .com  → 7.
-         * Сделаем 8: добавим ещё один уровень каталога.
-         * Пример: http://web.txt/portal/index.html
-         */
-        function proto5() {
             const p = rand(PROTOCOLS);
             const srv = rand(['web', 'host', 'server', 'site', 'portal']);
             const t1 = rand(['.txt', '.info', '.site', '.data', '.cloud']);
@@ -772,21 +724,22 @@
             const ext = rand(['.html', '.htm', '.php', '.asp']);
 
             const fragments = [
-                { text: p,         correct: true, order: 1 },
-                { text: '://',     correct: true, order: 2 },
-                { text: srv,       correct: true, order: 3 },
-                { text: t1,        correct: true, order: 4 },
-                { text: '/',       correct: true, order: 5 },
-                { text: pathName,  correct: true, order: 6 },
-                { text: '/',       correct: true, order: 7 },
-                { text: fname + ext, correct: true, order: 8 }
+                { text: p,               order: 1 },
+                { text: '://',           order: 2 },
+                { text: srv,             order: 3 },
+                { text: t1,              order: 4 },
+                { text: '/',             order: 5 },
+                { text: pathName,        order: 6 },
+                { text: '/',             order: 7 },
+                { text: fname + ext,     order: 8 }
             ];
 
             const correct = `${p}://${srv}${t1}/${pathName}/${fname}${ext}`;
             const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере ` +
                          `<b>${srv}${t1}</b>, осуществляется по протоколу <b>${p}</b>. Файл находится ` +
-                         `в каталоге <b>${pathName}</b>. Запишите последовательность цифр, кодирующую ` +
-                         `адрес этого файла в сети Интернет.`;
+                         `в каталоге <b>${pathName}</b>. Фрагменты адреса закодированы цифрами от 1 до ` +
+                         `${fragments.length}. Запишите последовательность цифр, кодирующую адрес этого ` +
+                         `файла в сети Интернет.`;
             const explain = `Напомним, как формируется адрес в сети Интернет. Сначала указывается протокол, ` +
                             `потом «://», потом сервер, затем «/», каталог, снова «/», и название файла. ` +
                             `Таким образом, адрес будет следующим: <b>${correct}</b>.`;
@@ -794,44 +747,7 @@
             return buildTask(fragments, correct, 'URL с каталогом', desc, explain);
         }
 
-        /* ---------- Прототип 6. URL с дистракторами (9 фрагментов) ----------
-         * 7 правильных + 2 лишних.
-         */
-        function proto6() {
-            const p = rand(PROTOCOLS);
-            const s = rand(SERVERS);
-            const t = rand(TLDS);
-            const fname = rand(FILENAMES);
-            const ext = rand(EXTENSIONS);
-
-            const fakeExt = rand(EXTENSIONS.filter(e => e !== ext));
-            const fakeTld = rand(TLDS.filter(x => x !== t));
-
-            const fragments = [
-                { text: p,         correct: true,  order: 1 },
-                { text: '://',     correct: true,  order: 2 },
-                { text: s,         correct: true,  order: 3 },
-                { text: t,         correct: true,  order: 4 },
-                { text: '/',       correct: true,  order: 5 },
-                { text: fname,     correct: true,  order: 6 },
-                { text: ext,       correct: true,  order: 7 },
-                { text: fakeExt,   correct: false, order: 0 },
-                { text: fakeTld,   correct: false, order: 0 }
-            ];
-
-            const correct = `${p}://${s}${t}/${fname}${ext}`;
-            const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${s}${t}</b>, ` +
-                         `осуществляется по протоколу <b>${p}</b>. Среди предложенных фрагментов есть лишние. ` +
-                         `Запишите последовательность цифр, кодирующую адрес указанного файла.`;
-            const explain = `Напомним, как формируется адрес в сети Интернет. Сначала указывается протокол, ` +
-                            `потом «://», потом сервер, затем «/», название файла указывается в конце. ` +
-                            `Часть фрагментов — лишние (чужое расширение, чужой домен верхнего уровня), они ` +
-                            `в адрес не входят. Правильный адрес: <b>${correct}</b>.`;
-
-            return buildTask(fragments, correct, 'URL с дистракторами', desc, explain);
-        }
-
-        const PROTOTYPES = [proto1, proto2, proto3, proto4, proto5, proto6];
+        const PROTOTYPES = [proto1, proto2, proto3, proto4];
 
         /* ---------- Состояние ---------- */
         let currentTask = null;
@@ -897,10 +813,11 @@
                 return;
             }
             assembled.forEach(part => {
-                const chip = document.createElement('div');
+                const chip = document.createElement('span');
                 chip.className = 'assembled-chip';
                 const display = part.text === '' ? '&nbsp;' : escapeHtml(part.text);
-                chip.innerHTML = '<span class="chip-num">' + part.num + '</span>' + display;
+                chip.innerHTML = display;
+                chip.title = 'Нажмите, чтобы вернуть фрагмент ' + part.num + ' обратно';
                 chip.addEventListener('click', () => removePart(part.num));
                 assembledContainer.appendChild(chip);
             });
@@ -977,9 +894,8 @@
             const listItems = [...currentTask.parts]
                 .sort((a, b) => a.num - b.num)
                 .map(p => {
-                    const mark = p.correct ? '✔' : '✘ (лишний)';
                     const display = p.text === '' ? '&nbsp;' : escapeHtml(p.text);
-                    return '<li><b>' + p.num + '</b> ' + mark + ' — ' + display + '</li>';
+                    return '<li><b>' + p.num + '</b> — ' + display + '</li>';
                 })
                 .join('');
 
