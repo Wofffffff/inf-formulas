@@ -1,38 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <!--Создай автономный HTML-файл (HTML + CSS + JS в одном) — тренажёр по информатике ОГЭ с двумя заданиями, переключаемыми кнопками в шапке. Структура. Один index.html. В шапке справа: бейдж прототипа, кнопки 📁 (задание 7) и 📘 (задание 1), кнопка 🌙/☀️ (тёмная тема, сохранение в localStorage). Переключение экранов — через JS, без перезагрузки. Задание 7 «Адресация». Генерируется условие и список фрагментов адреса, закодированных цифрами 1…N. Ученик вводит последовательность цифр. 4 прототипа: URL: протокол, ://, сервер, .tld, /, имя файла, расширение (7 частей). IP-адрес: 4 числа, одно с ведущей точкой. URL с протоколом: 7 частей. URL с каталогом: 8 частей с двумя слэшами. Слова (сервер, домен, файл, расширение, протокол) выбираются случайно из списков. Номера фрагментов перемешиваются, ответ никогда не 12345…. Собранный адрес в центре — единая строка URL без номеров; клик по чипу возвращает фрагмент обратно. Проверка: пустой ответ, не цифры, несовпадение длины, неверный порядок, верный — с разными сообщениями. «Решение» — правило формирования адреса, эталон, правильная последовательность, пояснение по фрагментам. Задание 1 «Кодирование текста». 4 прототипа по ФИПИ: Дано предложение «Слово1, Слово2, …, СловоN — категория». Одно слово вычеркнуто, убраны лишние запятые и пробелы. Известна экономия в байтах. Найти вычеркнутое слово. Кодировка КОИ-8 (1 байт/символ) или Unicode (2 байта/символ). Формула: Δ = (len + 2) × bpc. Целевое слово — не первое и не последнее в списке (чтобы ответ был однозначен). Категории: острова, рыбы, языки программирования, школьные предметы, дикие животные, хвойные растения, кошачьи, млекопитающие, профессии, реки, страны, моря. Слова брать из этих списков. Ответ — само слово. Проверка без учёта регистра. «Решение» — пошаговое: деление Δ на bpc, вычитание 2 символов (запятая и пробел), поиск слова нужной длины. Оформление. Современный аккуратный вид, max-width: 1400px, тёмная тема через CSS-переменные, официальный стиль ОГЭ, без placeholder и подсказок. Ответ на задание 7 — поле с inputmode="numeric", на задание 1 — обычное текстовое. Сообщения об ошибке — блочным текстом без flex. Код готов к размещению на GitHub Pages как единственный файл. -->
     <meta charset="UTF-8">
-    <!--Создай автономный HTML-файл (HTML + CSS + JS в одном) — тренажёр по информатике ОГЭ с двумя заданиями, переключаемыми кнопками в шапке.
-
-Структура. Один index.html. В шапке справа: бейдж прототипа, кнопки 📁 (задание 7) и 📘 (задание 1), кнопка 🌙/☀️ (тёмная тема, сохранение в localStorage). Переключение экранов — через JS, без перезагрузки.
-
-Задание 7 «Адресация». Генерируется условие и список фрагментов адреса, закодированных цифрами 1…N. Ученик вводит последовательность цифр. 4 прототипа:
-
-URL: протокол, ://, сервер, .tld, /, имя файла, расширение (7 частей).
-
-IP-адрес: 4 числа, одно с ведущей точкой.
-
-URL с протоколом: 7 частей.
-
-URL с каталогом: 8 частей с двумя слэшами.
-
-Слова (сервер, домен, файл, расширение, протокол) выбираются случайно из списков. Номера фрагментов перемешиваются, ответ никогда не 12345…. Собранный адрес в центре — единая строка URL без номеров; клик по чипу возвращает фрагмент обратно. Проверка: пустой ответ, не цифры, несовпадение длины, неверный порядок, верный — с разными сообщениями. «Решение» — правило формирования адреса, эталон, правильная последовательность, пояснение по фрагментам.
-
-Задание 1 «Кодирование текста». 4 прототипа по ФИПИ:
-
-Дано предложение «Слово1, Слово2, …, СловоN — категория». Одно слово вычеркнуто, убраны лишние запятые и пробелы. Известна экономия в байтах. Найти вычеркнутое слово. Кодировка КОИ-8 (1 байт/символ) или Unicode (2 байта/символ). Формула: Δ = (len + 2) × bpc. Целевое слово — не первое и не последнее в списке (чтобы ответ был однозначен).
-
-Категории: острова, рыбы, языки программирования, школьные предметы, дикие животные, хвойные растения, кошачьи, млекопитающие, профессии, реки, страны, моря. Слова брать из этих списков.
-
-Ответ — само слово. Проверка без учёта регистра.
-
-«Решение» — пошаговое: деление Δ на bpc, вычитание 2 символов (запятая и пробел), поиск слова нужной длины.
-
-Оформление. Современный аккуратный вид, max-width: 1400px, тёмная тема через CSS-переменные, официальный стиль ОГЭ, без placeholder и подсказок. Ответ на задание 7 — поле с inputmode="numeric", на задание 1 — обычное текстовое. Сообщения об ошибке — блочным текстом без flex.
-
-Код готов к размещению на GitHub Pages как единственный файл.
-
--->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ОГЭ информатика · Тренажёр</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
@@ -150,44 +120,65 @@ URL с каталогом: 8 частей с двумя слэшами.
             overflow: hidden;
         }
 
+        /* Шапка */
         .header {
             background: var(--header-gradient);
-            padding: 22px 44px;
+            padding: 18px 44px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px;
             color: #ffffff;
         }
 
         .header-left h1 {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 600;
-            margin: 0 0 4px 0;
+            margin: 0;
             color: #ffffff;
-        }
-
-        .header-left .subtitle {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.8);
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
-        .prototype-badge {
-            font-size: 13px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 5px;
-            padding: 6px 14px;
-            font-weight: 500;
-            color: #ffffff;
+        /* Большие кнопки-вкладки */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            padding: 20px 44px 0;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 16px 24px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            background: var(--panel-bg);
+            color: var(--text-soft);
+            cursor: pointer;
+            border: 1px solid var(--panel-border);
+            border-bottom: none;
+            transition: all 0.2s;
+        }
+
+        .nav-tab:hover {
+            background: var(--part-hover-bg);
+            color: var(--text);
+        }
+
+        .nav-tab.active {
+            background: var(--app-bg);
+            color: var(--accent);
+            border-top: 4px solid var(--accent);
+            font-weight: 700;
+            transform: translateY(1px);
         }
 
         .icon-btn {
@@ -195,37 +186,31 @@ URL с каталогом: 8 частей с двумя слэшами.
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 5px;
             color: #ffffff;
-            font-size: 16px;
-            width: 40px;
-            height: 36px;
+            font-size: 18px;
+            width: 44px;
+            height: 40px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
-            font-family: inherit;
         }
 
         .icon-btn:hover { background: rgba(255, 255, 255, 0.28); }
 
-        .icon-btn.active {
-            background: rgba(255, 255, 255, 0.9);
-            color: #23497a;
-            border-color: #ffffff;
-            font-weight: 700;
+        .content {
+            padding: 28px 44px 44px;
         }
-
-        .content { padding: 28px 44px 44px; }
 
         .screen { display: none; }
         .screen.active { display: block; }
 
+        /* Блоки условий */
         .task-statement {
             background: var(--accent-soft);
             border-left: 4px solid var(--accent);
             padding: 18px 22px;
             border-radius: 6px;
-            margin-bottom: 26px;
+            margin-bottom: 20px;
             font-size: 15px;
             line-height: 1.7;
             color: var(--text);
@@ -245,39 +230,27 @@ URL с каталогом: 8 частей с двумя слэшами.
             margin-top: 10px;
         }
 
-        .task-statement table {
-            border-collapse: collapse;
-            margin: 12px 0;
-            font-size: 14px;
+        /* Рабочая область Задания 7 */
+        .work-area {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
-
-        .task-statement table th,
-        .task-statement table td {
-            border: 1px solid var(--panel-border);
-            padding: 8px 14px;
-            text-align: left;
-        }
-
-        .task-statement table th { background: var(--panel-bg); font-weight: 600; }
-
-        .work-area { display: flex; gap: 28px; flex-wrap: wrap; }
 
         .parts-panel {
-            flex: 1 1 360px;
-            min-width: 300px;
+            flex: 1 1 320px;
             background: var(--panel-bg);
             border: 1px solid var(--panel-border);
             border-radius: 8px;
             padding: 18px;
         }
 
-        .parts-panel h3,
-        .build-zone h3 {
+        .parts-panel h3, .build-zone h3 {
             font-size: 13px;
             font-weight: 700;
             color: var(--text-soft);
             text-transform: uppercase;
-            letter-spacing: 0.8px;
             margin: 0 0 14px 0;
             padding-bottom: 10px;
             border-bottom: 1px solid var(--panel-divider);
@@ -287,40 +260,28 @@ URL с каталогом: 8 частей с двумя слэшами.
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 11px 14px;
+            padding: 10px 14px;
             border-radius: 6px;
             margin-bottom: 8px;
             background: var(--part-bg);
             border: 1px solid var(--part-border);
             cursor: pointer;
             user-select: none;
-            box-shadow: var(--shadow-chip);
         }
 
-        .part-row:hover {
-            background: var(--part-hover-bg);
-            border-color: var(--part-hover-border);
-        }
-
-        .part-row.used {
-            opacity: 0.4;
-            background: var(--part-used-bg);
-            border-color: var(--part-used-border);
-            cursor: default;
-            pointer-events: none;
-            box-shadow: none;
-        }
+        .part-row:hover { background: var(--part-hover-bg); border-color: var(--part-hover-border); }
+        .part-row.used { opacity: 0.4; pointer-events: none; box-shadow: none; }
 
         .part-number {
             font-weight: 700;
             color: var(--accent);
             font-size: 15px;
-            min-width: 26px;
+            min-width: 24px;
             text-align: right;
         }
 
         .part-text {
-            font-family: 'Consolas', 'Courier New', monospace;
+            font-family: 'Consolas', monospace;
             font-size: 15px;
             color: var(--text);
             word-break: break-all;
@@ -328,7 +289,6 @@ URL с каталогом: 8 частей с двумя слэшами.
 
         .build-panel {
             flex: 2 1 500px;
-            min-width: 320px;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -339,7 +299,7 @@ URL с каталогом: 8 частей с двумя слэшами.
             border: 1px solid var(--panel-border);
             border-radius: 8px;
             padding: 18px;
-            min-height: 130px;
+            min-height: 110px;
         }
 
         .assembled-container {
@@ -352,43 +312,33 @@ URL с каталогом: 8 частей с двумя слэшами.
             border: 1px solid var(--panel-border);
             border-radius: 6px;
             min-height: 46px;
-            font-family: 'Consolas', 'Courier New', monospace;
+            font-family: 'Consolas', monospace;
             font-size: 16px;
             color: var(--text);
-            word-break: break-all;
         }
 
-        .assembled-empty {
-            color: var(--text-muted);
-            font-size: 14px;
-            font-style: italic;
-            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-        }
+        .assembled-empty { color: var(--text-muted); font-style: italic; font-size: 14px; }
 
         .assembled-chip {
             background: transparent;
             border: none;
             padding: 2px 0;
-            margin: 0;
-            font-family: 'Consolas', 'Courier New', monospace;
+            font-family: 'Consolas', monospace;
             font-size: 16px;
             color: var(--text);
             cursor: pointer;
             display: inline;
-            line-height: 1.4;
-            border-radius: 3px;
         }
 
-        .assembled-chip:hover {
-            background: var(--accent-soft);
-            color: var(--accent);
-        }
+        .assembled-chip:hover { background: var(--accent-soft); color: var(--accent); }
 
+        /* Блок ответов и полей */
         .answer-block {
             background: var(--panel-bg);
             border: 1px solid var(--panel-border);
             border-radius: 8px;
             padding: 18px 20px;
+            margin-top: 20px;
         }
 
         .answer-block label {
@@ -405,18 +355,13 @@ URL с каталогом: 8 частей с двумя слэшами.
             border-radius: 6px;
             border: 1.5px solid var(--input-border);
             font-size: 18px;
-            font-family: 'Consolas', 'Courier New', monospace;
+            font-family: 'Consolas', monospace;
             background: var(--input-bg);
             color: var(--text);
             outline: none;
         }
 
-        .answer-input.digits { letter-spacing: 6px; }
-
-        .answer-input:focus {
-            border-color: var(--input-focus);
-            box-shadow: 0 0 0 3px rgba(74, 120, 176, 0.18);
-        }
+        .answer-input:focus { border-color: var(--input-focus); }
 
         .actions {
             display: flex;
@@ -426,8 +371,6 @@ URL с каталогом: 8 частей с двумя слэшами.
         }
 
         .btn {
-            flex: 1 1 auto;
-            min-width: 150px;
             padding: 12px 20px;
             border-radius: 6px;
             border: 1.5px solid transparent;
@@ -441,18 +384,65 @@ URL с каталогом: 8 частей с двумя слэшами.
             color: #ffffff;
             border-color: var(--btn-primary-bg);
         }
-        .btn-primary:hover {
-            background: var(--btn-primary-hover);
-            border-color: var(--btn-primary-hover);
-        }
+        .btn-primary:hover { background: var(--btn-primary-hover); }
+
         .btn-secondary {
             background: var(--btn-secondary-bg);
             color: var(--accent);
             border-color: var(--btn-secondary-border);
         }
-        .btn-secondary:hover {
-            background: var(--btn-secondary-hover);
-            border-color: var(--accent-border);
+        .btn-secondary:hover { background: var(--btn-secondary-hover); }
+
+        /* Промежуточные результаты */
+        .intermediate-block {
+            background: #fdfbf7;
+            border: 1px solid #e5d9c5;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        [data-theme="dark"] .intermediate-block {
+            background: #1e1a14;
+            border-color: #4a3f2a;
+        }
+
+        .intermediate-block.active { display: block; }
+
+        .intermediate-title {
+            font-weight: 700;
+            color: #8c6d3f;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        [data-theme="dark"] .intermediate-title { color: #d4b07a; }
+
+        /* Инпуты внутри промежуточных */
+        .inline-input {
+            width: 50px;
+            padding: 4px 6px;
+            font-family: 'Consolas', monospace;
+            font-size: 16px;
+            text-align: center;
+            border: 1px solid #c2cfe0;
+            border-radius: 4px;
+            background: #fff;
+            color: #1a2c44;
+            outline: none;
+        }
+
+        .inline-input:focus {
+            border-color: #4a78b0;
+            box-shadow: 0 0 0 2px rgba(74, 120, 176, 0.2);
+        }
+
+        .intermediate-text {
+            font-size: 15px;
+            line-height: 2.2;
+            color: var(--text);
         }
 
         .feedback {
@@ -462,73 +452,18 @@ URL с каталогом: 8 частей с двумя слэшами.
             font-size: 14px;
             font-weight: 500;
             line-height: 1.6;
-            display: block;
-            word-wrap: break-word;
         }
 
-        .feedback.neutral {
-            background: var(--feedback-neutral-bg);
-            color: var(--feedback-neutral-text);
-            border: 1px solid var(--feedback-neutral-border);
-        }
-        .feedback.correct {
-            background: var(--feedback-correct-bg);
-            color: var(--feedback-correct-text);
-            border: 1px solid var(--feedback-correct-border);
-        }
-        .feedback.incorrect {
-            background: var(--feedback-incorrect-bg);
-            color: var(--feedback-incorrect-text);
-            border: 1px solid var(--feedback-incorrect-border);
-        }
-        .feedback.solution {
-            background: var(--feedback-solution-bg);
-            color: var(--feedback-solution-text);
-            border: 1px solid var(--feedback-solution-border);
-        }
-
-        .feedback.solution .sol-title {
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 15px;
-            text-transform: uppercase;
-        }
-        .feedback.solution .sol-label {
-            font-size: 13px;
-            margin-top: 10px;
-            margin-bottom: 4px;
-            font-weight: 600;
-        }
-        .feedback.solution .sol-answer {
-            font-family: 'Consolas', 'Courier New', monospace;
-            background: var(--input-bg);
-            padding: 8px 12px;
-            border-radius: 4px;
-            border: 1px solid var(--feedback-solution-border);
-            color: var(--text);
-            word-break: break-all;
-            font-size: 14px;
-            margin: 2px 0 4px;
-        }
-        .feedback.solution .sol-explain {
-            font-size: 13px;
-            line-height: 1.7;
-            margin-top: 4px;
-        }
-        .feedback.solution .sol-list {
-            margin: 8px 0 0 0;
-            padding-left: 20px;
-            font-size: 13px;
-            line-height: 1.7;
-        }
-        .feedback.solution .sol-list b { color: var(--accent); }
-
-        #screen1 .answer-block { max-width: 900px; }
+        .feedback.neutral { background: var(--feedback-neutral-bg); color: var(--feedback-neutral-text); }
+        .feedback.correct { background: var(--feedback-correct-bg); color: var(--feedback-correct-text); }
+        .feedback.incorrect { background: var(--feedback-incorrect-bg); color: var(--feedback-incorrect-text); }
+        .feedback.solution { background: var(--feedback-solution-bg); color: var(--feedback-solution-text); }
 
         @media (max-width: 820px) {
             body { padding: 16px; }
-            .header, .content { padding-left: 22px; padding-right: 22px; }
+            .header, .content, .nav-tabs { padding-left: 16px; padding-right: 16px; }
             .work-area { flex-direction: column; }
+            .nav-tab { padding: 12px; font-size: 16px; }
         }
     </style>
 </head>
@@ -537,27 +472,27 @@ URL с каталогом: 8 частей с двумя слэшами.
 
     <div class="header">
         <div class="header-left">
-            <h1 id="headerTitle">ОГЭ по информатике · Задание 7</h1>
-            <div class="subtitle" id="headerSubtitle">Адресация в сети Интернет</div>
+            <h1>ОГЭ информатика · Тренажёр</h1>
         </div>
         <div class="header-right">
-            <div class="prototype-badge" id="prototypeBadge">Прототип: —</div>
-            <button class="icon-btn active" id="taskBtn7" title="Задание 7">📁</button>
-            <button class="icon-btn" id="taskBtn1" title="Задание 1">📘</button>
             <button class="icon-btn" id="themeToggle" title="Переключить тему">🌙</button>
         </div>
     </div>
 
+    <!-- Большие кнопки переключения -->
+    <div class="nav-tabs">
+        <button class="nav-tab active" id="tab7">Задание №7 (Адресация)</button>
+        <button class="nav-tab" id="tab1">Задание №1 (Кодирование)</button>
+    </div>
+
     <div class="content">
 
-        <!-- ЭКРАН 1: ЗАДАНИЕ №7 -->
+        <!-- ================= ЭКРАН 7 ================= -->
         <div class="screen active" id="screen7">
             <div class="task-statement">
                 <div class="task-title">Условие</div>
-                <div class="task-desc" id="task7Desc">Загрузка задания…</div>
-                <div class="task-question">
-                    Фрагменты адреса закодированы цифрами от 1 до N. Запишите последовательность этих цифр, кодирующую адрес в сети Интернет.
-                </div>
+                <div id="task7Desc">Загрузка...</div>
+                <div class="task-question">В ответе запишите последовательность цифр.</div>
             </div>
 
             <div class="work-area">
@@ -565,56 +500,57 @@ URL с каталогом: 8 частей с двумя слэшами.
                     <h3>Фрагменты адреса</h3>
                     <div id="partsList"></div>
                 </div>
-
                 <div class="build-panel">
                     <div class="build-zone">
                         <h3>Собранный адрес</h3>
                         <div id="assembledContainer" class="assembled-container">
-                            <div class="assembled-empty" id="assembledEmpty">
-                                Нажимайте на фрагменты слева — они появятся здесь в порядке выбора.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="answer-block">
-                        <label>Ваш ответ: <span style="font-weight:400;color:var(--text-muted);">(последовательность цифр без пробелов)</span></label>
-                        <input type="text" id="answer7" class="answer-input digits" autocomplete="off" spellcheck="false" inputmode="numeric">
-
-                        <div class="actions">
-                            <button class="btn btn-primary" id="check7">Проверить</button>
-                            <button class="btn btn-secondary" id="solution7">Решение</button>
-                            <button class="btn btn-secondary" id="new7">Новое задание</button>
-                        </div>
-
-                        <div id="feedback7" class="feedback neutral">
-                            Выберите фрагменты адреса слева, затем введите последовательность цифр.
+                            <div class="assembled-empty">Нажимайте на фрагменты слева...</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- ЭКРАН 2: ЗАДАНИЕ №1 -->
-        <div class="screen" id="screen1">
-            <div class="task-statement">
-                <div class="task-title">Условие</div>
-                <div id="task1Desc">Загрузка задания…</div>
-                <div class="task-question" id="task1Question"></div>
-            </div>
 
             <div class="answer-block">
                 <label>Ваш ответ:</label>
-                <input type="text" id="answer1" class="answer-input" autocomplete="off" spellcheck="false">
+                <input type="text" id="answer7" class="answer-input" autocomplete="off" spellcheck="false">
+                <div class="actions">
+                    <button class="btn btn-primary" id="check7">Проверить</button>
+                    <button class="btn btn-secondary" id="solution7">Решение</button>
+                    <button class="btn btn-secondary" id="new7">Новое задание</button>
+                </div>
+                <div id="feedback7" class="feedback neutral">Выберите фрагменты и введите ответ.</div>
+            </div>
+        </div>
 
+        <!-- ================= ЭКРАН 1 ================= -->
+        <div class="screen" id="screen1">
+            <div class="task-statement">
+                <div class="task-title">Условие</div>
+                <div id="task1Desc">Загрузка...</div>
+                <div class="task-question" id="task1Question"></div>
+            </div>
+
+            <!-- Промежуточные результаты (интерактив) -->
+            <div class="intermediate-block active" id="intermediateBlock">
+                <div class="intermediate-title">Промежуточные результаты</div>
+                <div class="intermediate-text" id="intermediateText">
+                    <!-- заполняется JS -->
+                </div>
+                <div style="margin-top: 12px;">
+                    <button class="btn btn-secondary" id="checkStepsBtn" style="padding: 8px 16px; font-size: 14px;">Проверить шаги</button>
+                    <span id="stepsFeedback" style="margin-left: 12px; font-size: 14px; font-weight: 600;"></span>
+                </div>
+            </div>
+
+            <div class="answer-block">
+                <label>Ваш ответ (вычеркнутое слово):</label>
+                <input type="text" id="answer1" class="answer-input" autocomplete="off" spellcheck="false">
                 <div class="actions">
                     <button class="btn btn-primary" id="check1">Проверить</button>
                     <button class="btn btn-secondary" id="solution1">Решение</button>
                     <button class="btn btn-secondary" id="new1">Новое задание</button>
                 </div>
-
-                <div id="feedback1" class="feedback neutral">
-                    Введите ответ и нажмите «Проверить».
-                </div>
+                <div id="feedback1" class="feedback neutral">Введите ответ.</div>
             </div>
         </div>
 
@@ -627,46 +563,26 @@ URL с каталогом: 8 частей с двумя слэшами.
  * ============================================================ */
 const rand = arr => arr[Math.floor(Math.random() * arr.length)];
 const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
-function shuffle(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
+function shuffle(a) { a = [...a]; for (let i = a.length - 1; i > 0; i--) { let j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function pickNUnique(arr, n) { return shuffle(arr).slice(0, n); }
-
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
+function escapeHtml(text) { const d = document.createElement('div'); d.textContent = text; return d.innerHTML; }
 
 /* ============================================================
  *  ТЕМА
  * ============================================================ */
 const themeToggle = document.getElementById('themeToggle');
-
-function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-    try { localStorage.setItem('oge-theme', theme); } catch (e) {}
+function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    themeToggle.textContent = t === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('oge-theme', t);
 }
 (function initTheme() {
-    let saved = null;
-    try { saved = localStorage.getItem('oge-theme'); } catch (e) {}
-    if (saved === 'dark' || saved === 'light') {
-        applyTheme(saved);
-    } else {
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(prefersDark ? 'dark' : 'light');
-    }
+    const saved = localStorage.getItem('oge-theme');
+    if (saved) applyTheme(saved);
+    else applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 })();
 themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+    applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
 });
 
 /* ============================================================
@@ -674,30 +590,20 @@ themeToggle.addEventListener('click', () => {
  * ============================================================ */
 const screen7 = document.getElementById('screen7');
 const screen1 = document.getElementById('screen1');
-const btn7 = document.getElementById('taskBtn7');
-const btn1 = document.getElementById('taskBtn1');
-const headerTitle = document.getElementById('headerTitle');
-const headerSubtitle = document.getElementById('headerSubtitle');
+const tab7 = document.getElementById('tab7');
+const tab1 = document.getElementById('tab1');
 
 function showScreen(n) {
     if (n === 7) {
-        screen7.classList.add('active');
-        screen1.classList.remove('active');
-        btn7.classList.add('active');
-        btn1.classList.remove('active');
-        headerTitle.textContent = 'ОГЭ по информатике · Задание 7';
-        headerSubtitle.textContent = 'Адресация в сети Интернет';
+        screen7.classList.add('active'); screen1.classList.remove('active');
+        tab7.classList.add('active'); tab1.classList.remove('active');
     } else {
-        screen1.classList.add('active');
-        screen7.classList.remove('active');
-        btn1.classList.add('active');
-        btn7.classList.remove('active');
-        headerTitle.textContent = 'ОГЭ по информатике · Задание 1';
-        headerSubtitle.textContent = 'Количество информации. Кодирование текста';
+        screen1.classList.add('active'); screen7.classList.remove('active');
+        tab1.classList.add('active'); tab7.classList.remove('active');
     }
 }
-btn7.addEventListener('click', () => showScreen(7));
-btn1.addEventListener('click', () => showScreen(1));
+tab7.addEventListener('click', () => showScreen(7));
+tab1.addEventListener('click', () => showScreen(1));
 
 /* ============================================================
  *  ЗАДАНИЕ №7
@@ -713,131 +619,78 @@ btn1.addEventListener('click', () => showScreen(1));
         const numbered = shuffle([...fragments]);
         numbered.forEach((p, i) => { p.num = i + 1; });
         const sorted = numbered.slice().sort((a, b) => a.order - b.order);
-        const correctOrder = sorted.map(p => p.num);
-        return { parts: numbered, correctOrder, correctString: correct, prototypeName, desc, explain };
+        return { parts: numbered, correctOrder: sorted.map(p => p.num), correctString: correct, prototypeName, desc, explain };
     }
 
     function proto1() {
-        const p = rand(PROTOCOLS);
-        const s = rand(SERVERS);
-        const t = rand(TLDS);
-        const fname = rand(FILENAMES);
-        const ext = rand(EXTENSIONS);
+        const p = rand(PROTOCOLS), s = rand(SERVERS), t = rand(TLDS), fname = rand(FILENAMES), ext = rand(EXTENSIONS);
         const fragments = [
-            { text: p,     order: 1 },
-            { text: '://', order: 2 },
-            { text: s,     order: 3 },
-            { text: t,     order: 4 },
-            { text: '/',   order: 5 },
-            { text: fname, order: 6 },
-            { text: ext,   order: 7 }
+            { text: p, order: 1 }, { text: '://', order: 2 }, { text: s, order: 3 },
+            { text: t, order: 4 }, { text: '/', order: 5 }, { text: fname, order: 6 }, { text: ext, order: 7 }
         ];
         const correct = `${p}://${s}${t}/${fname}${ext}`;
-        const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${s}${t}</b>, ` +
-                     `осуществляется по протоколу <b>${p}</b>. Фрагменты адреса закодированы цифрами ` +
-                     `от 1 до ${fragments.length}.`;
-        const explain = `Напомним, как формируется адрес в сети Интернет. Сначала указывается протокол, ` +
-                        `потом «://», потом сервер, затем «/», название файла указывается в конце. ` +
-                        `Адрес: <b>${correct}</b>.`;
+        const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${s}${t}</b>, осуществляется по протоколу <b>${p}</b>. Фрагменты адреса закодированы цифрами от 1 до ${fragments.length}.`;
+        const explain = `Напомним, как формируется адрес. Сначала указывается протокол, потом «://», потом сервер, затем «/», название файла в конце. Адрес: <b>${correct}</b>.`;
         return buildTask(fragments, correct, 'URL-адрес', desc, explain);
     }
-
     function proto2() {
         const nums = [];
-        while (nums.length < 4) {
-            const n = randInt(0, 255);
-            if (!nums.includes(n)) nums.push(n);
-        }
-        const lastIdx = randInt(0, 3);
-        const dotIdx = (lastIdx + 1) % 4;
+        while (nums.length < 4) { const n = randInt(0, 255); if (!nums.includes(n)) nums.push(n); }
+        const lastIdx = randInt(0, 3), dotIdx = (lastIdx + 1) % 4;
         const fragments = [];
-        nums.forEach((n, i) => {
-            let text = String(n);
-            if (i === dotIdx) text = '.' + n;
-            fragments.push({ text, order: i + 1 });
-        });
+        nums.forEach((n, i) => { fragments.push({ text: i === dotIdx ? '.' + n : String(n), order: i + 1 }); });
         const correct = nums.join('.');
-        const desc = `Обнаружены четыре обрывка бумаги, на которых записаны фрагменты одного IP-адреса. ` +
-                     `Фрагменты обозначены цифрами от 1 до 4.`;
-        const explain = `IP-адрес — четыре разделённых точками числа, каждое не больше 255. ` +
-                        `Фрагмент с точкой в начале не может стоять первым. Правильный адрес: <b>${correct}</b>.`;
+        const desc = `Обнаружены четыре обрывка бумаги, на которых записаны фрагменты одного IP-адреса. Фрагменты обозначены цифрами от 1 до 4.`;
+        const explain = `IP-адрес — четыре разделённых точками числа, каждое не больше 255. Фрагмент с точкой в начале не может стоять первым. Правильный адрес: <b>${correct}</b>.`;
         return buildTask(fragments, correct, 'IP-адрес', desc, explain);
     }
-
     function proto3() {
-        const p = rand(PROTOCOLS);
-        const s = 'magazin';
-        const t = rand(['.com', '.ru', '.org', '.net']);
-        const fname = rand(['kassa', 'cassa', 'folder', 'summa', 'check', 'order']);
-        const ext = rand(['.xls', '.xlsx', '.pdf', '.doc']);
+        const p = rand(PROTOCOLS), s = 'magazin', t = rand(['.com', '.ru', '.org', '.net']);
+        const fname = rand(['kassa', 'cassa', 'folder', 'summa', 'check', 'order']), ext = rand(['.xls', '.xlsx', '.pdf', '.doc']);
         const fragments = [
-            { text: p,     order: 1 },
-            { text: '://', order: 2 },
-            { text: s,     order: 3 },
-            { text: t,     order: 4 },
-            { text: '/',   order: 5 },
-            { text: fname, order: 6 },
-            { text: ext,   order: 7 }
+            { text: p, order: 1 }, { text: '://', order: 2 }, { text: s, order: 3 },
+            { text: t, order: 4 }, { text: '/', order: 5 }, { text: fname, order: 6 }, { text: ext, order: 7 }
         ];
         const correct = `${p}://${s}${t}/${fname}${ext}`;
-        const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${s}${t}</b>, ` +
-                     `осуществляется по протоколу <b>${p}</b>.`;
-        const explain = `Сначала протокол, потом «://», потом сервер, затем «/», затем файл. ` +
-                        `Адрес: <b>${correct}</b>.`;
+        const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${s}${t}</b>, осуществляется по протоколу <b>${p}</b>.`;
+        const explain = `Сначала протокол, потом «://», потом сервер, затем «/», затем файл. Адрес: <b>${correct}</b>.`;
         return buildTask(fragments, correct, 'URL с протоколом', desc, explain);
     }
-
     function proto4() {
-        const p = rand(PROTOCOLS);
-        const srv = rand(['web', 'host', 'server', 'site', 'portal']);
+        const p = rand(PROTOCOLS), srv = rand(['web', 'host', 'server', 'site', 'portal']);
         const t1 = rand(['.txt', '.info', '.site', '.data', '.cloud']);
         const pathName = rand(['portal', 'index', 'main', 'home', 'start']);
-        const fname = rand(['page', 'file', 'doc', 'task']);
-        const ext = rand(['.html', '.htm', '.php', '.asp']);
+        const fname = rand(['page', 'file', 'doc', 'task']), ext = rand(['.html', '.htm', '.php', '.asp']);
         const fragments = [
-            { text: p,           order: 1 },
-            { text: '://',       order: 2 },
-            { text: srv,         order: 3 },
-            { text: t1,          order: 4 },
-            { text: '/',         order: 5 },
-            { text: pathName,    order: 6 },
-            { text: '/',         order: 7 },
-            { text: fname + ext, order: 8 }
+            { text: p, order: 1 }, { text: '://', order: 2 }, { text: srv, order: 3 },
+            { text: t1, order: 4 }, { text: '/', order: 5 }, { text: pathName, order: 6 },
+            { text: '/', order: 7 }, { text: fname + ext, order: 8 }
         ];
         const correct = `${p}://${srv}${t1}/${pathName}/${fname}${ext}`;
-        const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${srv}${t1}</b>, ` +
-                     `по протоколу <b>${p}</b>. Файл лежит в каталоге <b>${pathName}</b>.`;
+        const desc = `Доступ к файлу <b>${fname}${ext}</b>, находящемуся на сервере <b>${srv}${t1}</b>, по протоколу <b>${p}</b>. Файл лежит в каталоге <b>${pathName}</b>.`;
         const explain = `Протокол, «://», сервер, «/», каталог, «/», файл. Адрес: <b>${correct}</b>.`;
         return buildTask(fragments, correct, 'URL с каталогом', desc, explain);
     }
-
     const PROTOTYPES = [proto1, proto2, proto3, proto4];
 
     let currentTask = null;
-    let usedNums = new Set();
+    const usedNums = new Set();
     let assembled = [];
 
     const partsListEl = document.getElementById('partsList');
     const assembledContainer = document.getElementById('assembledContainer');
     const answerInput = document.getElementById('answer7');
     const feedback = document.getElementById('feedback7');
-    const prototypeBadge = document.getElementById('prototypeBadge');
     const taskDescEl = document.getElementById('task7Desc');
 
-    function setFeedback(type, html) {
-        feedback.className = 'feedback ' + type;
-        feedback.innerHTML = html;
-    }
+    function setFeedback(type, html) { feedback.className = 'feedback ' + type; feedback.innerHTML = html; }
 
     function renderParts() {
         partsListEl.innerHTML = '';
-        const sorted = [...currentTask.parts].sort((a, b) => a.num - b.num);
-        sorted.forEach(part => {
+        [...currentTask.parts].sort((a, b) => a.num - b.num).forEach(part => {
             const row = document.createElement('div');
             row.className = 'part-row' + (usedNums.has(part.num) ? ' used' : '');
-            row.innerHTML =
-                '<span class="part-number">' + part.num + ')</span>' +
-                '<span class="part-text">' + escapeHtml(part.text) + '</span>';
+            row.innerHTML = `<span class="part-number">${part.num})</span><span class="part-text">${escapeHtml(part.text)}</span>`;
             row.addEventListener('click', () => addPart(part.num));
             partsListEl.appendChild(row);
         });
@@ -846,17 +699,13 @@ btn1.addEventListener('click', () => showScreen(1));
     function renderAssembled() {
         assembledContainer.innerHTML = '';
         if (assembled.length === 0) {
-            const empty = document.createElement('div');
-            empty.className = 'assembled-empty';
-            empty.textContent = 'Нажимайте на фрагменты слева — они появятся здесь в порядке выбора.';
-            assembledContainer.appendChild(empty);
+            assembledContainer.innerHTML = '<div class="assembled-empty">Нажимайте на фрагменты слева...</div>';
             return;
         }
         assembled.forEach(part => {
             const chip = document.createElement('span');
             chip.className = 'assembled-chip';
-            chip.innerHTML = escapeHtml(part.text);
-            chip.title = 'Нажмите, чтобы вернуть фрагмент ' + part.num + ' обратно';
+            chip.textContent = part.text;
             chip.addEventListener('click', () => removePart(part.num));
             assembledContainer.appendChild(chip);
         });
@@ -865,96 +714,58 @@ btn1.addEventListener('click', () => showScreen(1));
     function addPart(num) {
         if (usedNums.has(num)) return;
         const part = currentTask.parts.find(p => p.num === num);
-        if (!part) return;
-        usedNums.add(num);
-        assembled.push(part);
-        renderParts();
-        renderAssembled();
+        usedNums.add(num); assembled.push(part);
+        renderParts(); renderAssembled();
     }
-
     function removePart(num) {
         const idx = assembled.findIndex(p => p.num === num);
         if (idx === -1) return;
-        assembled.splice(idx, 1);
-        usedNums.delete(num);
-        renderParts();
-        renderAssembled();
+        assembled.splice(idx, 1); usedNums.delete(num);
+        renderParts(); renderAssembled();
     }
 
     function checkAnswer() {
         const raw = answerInput.value.trim();
-        if (!raw) { setFeedback('incorrect', 'Введите ответ — последовательность цифр.'); return; }
-        if (!/^[0-9]+$/.test(raw)) { setFeedback('incorrect', 'Ответ должен состоять только из цифр.'); return; }
+        if (!raw) { setFeedback('incorrect', 'Введите ответ.'); return; }
+        if (!/^[0-9]+$/.test(raw)) { setFeedback('incorrect', 'Только цифры.'); return; }
         const userSeq = raw.split('').map(Number);
         const correct = currentTask.correctOrder;
         if (userSeq.length !== correct.length) {
-            setFeedback('incorrect',
-                'Неверно. Вы указали <b>' + escapeHtml(raw) + '</b> ' +
-                '(' + userSeq.length + ' цифр), а в адресе ' + correct.length + ' фрагментов. ' +
-                'Правильная последовательность: <b>' + correct.join('') + '</b>.');
+            setFeedback('incorrect', `Неверно. Вы указали ${userSeq.length} цифр, а в адресе ${correct.length} фрагментов. Правильная последовательность: <b>${correct.join('')}</b>.`);
             return;
         }
-        const match = userSeq.every((v, i) => v === correct[i]);
-        if (match) {
-            setFeedback('correct',
-                'Верно. Последовательность <b>' + escapeHtml(raw) + '</b> ' +
-                'соответствует правильному порядку фрагментов адреса.');
+        if (userSeq.every((v, i) => v === correct[i])) {
+            setFeedback('correct', 'Верно!');
         } else {
-            setFeedback('incorrect',
-                'Неверно. Вы указали <b>' + escapeHtml(raw) + '</b>, ' +
-                'правильная последовательность: <b>' + correct.join('') + '</b>. ' +
-                'Разбор смотрите в разделе «Решение».');
+            setFeedback('incorrect', `Неверно. Правильная последовательность: <b>${correct.join('')}</b>.`);
         }
     }
 
     function showSolution() {
-        const orderStr = currentTask.correctOrder.join('');
-        const listItems = [...currentTask.parts]
-            .sort((a, b) => a.num - b.num)
-            .map(p => '<li><b>' + p.num + '</b> — ' + escapeHtml(p.text) + '</li>')
-            .join('');
-        setFeedback('solution',
-            '<div class="sol-title">Решение</div>' +
-            '<div class="sol-explain">' + currentTask.explain + '</div>' +
-            '<div class="sol-label">Эталонный адрес:</div>' +
-            '<div class="sol-answer">' + escapeHtml(currentTask.correctString) + '</div>' +
-            '<div class="sol-label">Правильная последовательность цифр:</div>' +
-            '<div class="sol-answer">' + orderStr + '</div>' +
-            '<div class="sol-label">Пояснение по фрагментам:</div>' +
-            '<ul class="sol-list">' + listItems + '</ul>'
-        );
+        const listItems = [...currentTask.parts].sort((a, b) => a.num - b.num).map(p => `<li><b>${p.num}</b> — ${escapeHtml(p.text)}</li>`).join('');
+        setFeedback('solution', `<div class="sol-title">Решение</div><div class="sol-explain">${currentTask.explain}</div><div class="sol-label">Правильная последовательность:</div><div class="sol-answer">${currentTask.correctOrder.join('')}</div><ul class="sol-list">${listItems}</ul>`);
     }
 
     function newTask() {
-        const factory = rand(PROTOTYPES);
-        currentTask = factory();
-        usedNums = new Set();
-        assembled = [];
+        currentTask = rand(PROTOTYPES)();
+        usedNums.clear(); assembled = [];
         answerInput.value = '';
-        prototypeBadge.textContent = 'Прототип: ' + currentTask.prototypeName;
         taskDescEl.innerHTML = currentTask.desc;
-        renderParts();
-        renderAssembled();
-        setFeedback('neutral', 'Выберите фрагменты адреса слева, затем введите последовательность цифр.');
+        renderParts(); renderAssembled();
+        setFeedback('neutral', 'Выберите фрагменты и введите ответ.');
     }
 
     document.getElementById('check7').addEventListener('click', checkAnswer);
     document.getElementById('solution7').addEventListener('click', showSolution);
     document.getElementById('new7').addEventListener('click', newTask);
-    answerInput.addEventListener('keydown', e => {
-        if (e.key === 'Enter') { e.preventDefault(); checkAnswer(); }
-    });
-
+    answerInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkAnswer(); });
     newTask();
 })();
 
 /* ============================================================
- *  ЗАДАНИЕ №1 — КОДИРОВАНИЕ ТЕКСТА
- *  Прототипы: найти вычеркнутое слово по разнице в байтах.
+ *  ЗАДАНИЕ №1
  * ============================================================ */
 (function task1Module() {
-
-    /* ---------- Списки слов по категориям ---------- */
     const WORDS = {
         islands:    ['Ява', 'Куба', 'Лусон', 'Маражо', 'Суматра', 'Сулавеси', 'Эспаньола'],
         fish:       ['ёрш', 'Щука', 'Бычок', 'Карась', 'Гимнура', 'Долгопёр'],
@@ -972,132 +783,125 @@ btn1.addEventListener('click', () => showScreen(1));
         seas:       ['Аки', 'Бали', 'Банда', 'Сибуян', 'Камотес', 'Лабрадор', 'Линкольна']
     };
 
-    /* ---------- Категории: название списка → подпись в предложении ---------- */
     const CATEGORIES = [
-        { key: 'islands',     label: 'острова' },
-        { key: 'fish',        label: 'рыбы' },
-        { key: 'languages',   label: 'языки программирования' },
-        { key: 'subjects',    label: 'школьные предметы' },
-        { key: 'animals',     label: 'дикие животные' },
-        { key: 'conifers',    label: 'хвойные растения' },
-        { key: 'felines',     label: 'кошачьи' },
-        { key: 'programLang2',label: 'языки программирования' },
-        { key: 'mammals',     label: 'млекопитающие' },
-        { key: 'animals2',    label: 'животные' },
-        { key: 'professions', label: 'профессии' },
-        { key: 'rivers',      label: 'реки' },
-        { key: 'countries',   label: 'страны' },
-        { key: 'seas',        label: 'моря' }
+        { key: 'islands', label: 'острова' }, { key: 'fish', label: 'рыбы' },
+        { key: 'languages', label: 'языки программирования' }, { key: 'subjects', label: 'школьные предметы' },
+        { key: 'animals', label: 'дикие животные' }, { key: 'conifers', label: 'хвойные растения' },
+        { key: 'felines', label: 'кошачьи' }, { key: 'programLang2', label: 'языки программирования' },
+        { key: 'mammals', label: 'млекопитающие' }, { key: 'animals2', label: 'животные' },
+        { key: 'professions', label: 'профессии' }, { key: 'rivers', label: 'реки' },
+        { key: 'countries', label: 'страны' }, { key: 'seas', label: 'моря' }
     ];
 
-    /* ---------- Кодировки ---------- */
     const ENCODINGS = [
-        { name: 'КОИ-8',    bitsPerChar: 8  },
-        { name: 'Unicode',  bitsPerChar: 16 }
+        { name: 'КОИ-8', bitsPerChar: 8 },
+        { name: 'Unicode', bitsPerChar: 16 }
     ];
 
-    /* ---------- Прототип ----------
-     * Строим задачу так, чтобы ответ был однозначен.
-     *
-     * Пусть bpc — байт на символ (1 для КОИ-8, 2 для Unicode).
-     * Δ — заданная экономия в байтах.
-     *
-     * Для слов, стоящих в середине списка (не первых и не последних),
-     * при вычёркивании исчезают:
-     *   - само слово (len символов),
-     *   - запятая + пробел, которые были после него (2 символа),
-     *   - плюс может «съехать» ещё одна запятая слева, если слово было последним в подгруппе — но
-     *     для однозначности возьмём случай, когда слева запятая тоже исчезает ровно на 1 символ.
-     *
-     * В заданиях ФИПИ Δ всегда = (len + 2) * bpc или (len + 3) * bpc.
-     * Мы будем использовать первый вариант — он даёт однозначное восстановление:
-     *     len = Δ / bpc − 2.
-     */
-    function buildTask(encoding, words, categoryLabel, targetIndex) {
-        const bpc = encoding.bitsPerChar / 8; // 1 или 2
-
-        // Собираем предложение: «Слово1, Слово2, …, СловоN — категория».
-        const sentence = '«' + words.join(', ') + ' — ' + categoryLabel + '».';
-
-        // Целевое слово — то, что вычеркнули. Оно должно быть НЕ первым и НЕ последним,
-        // чтобы после него гарантированно были «, » (запятая и пробел).
-        const targetWord = words[targetIndex];
-        const len = targetWord.length;
-        const deltaBytes = (len + 2) * bpc;
-
-        const desc = `В кодировке ${encoding.name} каждый символ кодируется ${encoding.bitsPerChar} битами. ` +
-                     `Ученик написал текст (в нём нет лишних пробелов):<br><br>` +
-                     `<b>${escapeHtml(sentence)}</b><br><br>` +
-                     `Ученик вычеркнул из списка название одного из ${categoryLabel}. Заодно он вычеркнул ` +
-                     `ставшие лишними запятые и пробелы — два пробела не должны идти подряд.<br>` +
-                     `При этом размер нового предложения в данной кодировке оказался на <b>${deltaBytes}</b> ` +
-                     `байт меньше, чем размер исходного предложения.`;
-
-        const question = `Напишите в ответе вычеркнутое название.`;
-        const answer = targetWord;
-
-        const explain =
-            `В кодировке ${encoding.name} один символ занимает <b>${bpc}</b> байт. ` +
-            `Разница между исходным и новым предложением — <b>${deltaBytes}</b> байт. ` +
-            `Значит, всего исчезло <b>${deltaBytes} ÷ ${bpc} = ${deltaBytes / bpc}</b> символов. ` +
-            `Из них 1 символ — запятая и 1 символ — пробел, которые стали лишними после удаления слова. ` +
-            `Остаётся <b>${deltaBytes / bpc} − 2 = ${len}</b> символов — это длина вычеркнутого слова. ` +
-            `В списке из ${words.length} слов такую длину (${len}) имеет слово <b>${targetWord}</b>.`;
-
-        return { desc, question, answer, explain, prototypeName: 'Вычеркнутое слово' };
-    }
-
-    /* ---------- Генерация задания ---------- */
-    function generate() {
-        // Выбираем случайную категорию и кодировку
-        const cat = rand(CATEGORIES);
-        const encoding = rand(ENCODINGS);
-        const list = WORDS[cat.key];
-
-        // Берём 5–7 слов из списка, сохраняя порядок как в исходном (для стабильности)
-        const n = randInt(5, Math.min(7, list.length));
-        const chosen = pickNUnique(list, n);
-
-        // Целевое слово — не первое и не последнее
-        const targetIndex = randInt(1, chosen.length - 2);
-
-        return buildTask(encoding, chosen, cat.label, targetIndex);
-    }
-
-    /* ---------- Состояние ---------- */
     let currentTask = null;
+
     const taskDescEl = document.getElementById('task1Desc');
     const taskQuestionEl = document.getElementById('task1Question');
     const answerInput = document.getElementById('answer1');
     const feedback = document.getElementById('feedback1');
+    const intermediateText = document.getElementById('intermediateText');
+    const stepsFeedback = document.getElementById('stepsFeedback');
 
-    function setFeedback(type, html) {
-        feedback.className = 'feedback ' + type;
-        feedback.innerHTML = html;
+    function setFeedback(type, html) { feedback.className = 'feedback ' + type; feedback.innerHTML = html; }
+
+    function generate() {
+        const cat = rand(CATEGORIES);
+        const encoding = rand(ENCODINGS);
+        const list = WORDS[cat.key];
+
+        const n = randInt(5, Math.min(7, list.length));
+        const chosen = pickNUnique(list, n);
+        const targetIndex = randInt(1, chosen.length - 2);
+        const targetWord = chosen[targetIndex];
+
+        const bpc = encoding.bitsPerChar / 8;
+        const len = targetWord.length;
+        const deltaBytes = (len + 2) * bpc;
+
+        const sentence = '«' + chosen.join(', ') + ' — ' + cat.label + '».';
+
+        const desc = `В кодировке ${encoding.name} каждый символ кодируется ${encoding.bitsPerChar} битами. ` +
+                     `Ученик написал текст:<br><br><b>${escapeHtml(sentence)}</b><br><br>` +
+                     `Ученик вычеркнул из списка название одного из ${cat.label}. Заодно он вычеркнул ставшие лишними запятые и пробелы — два пробела не должны идти подряд.<br>` +
+                     `При этом размер нового предложения в данной кодировке оказался на <b>${deltaBytes}</b> байт меньше, чем размер исходного предложения.`;
+
+        const question = `Напишите в ответе вычеркнутое название.`;
+        
+        // Данные для промежуточного окна
+        const stepsData = {
+            bits: encoding.bitsPerChar,
+            bpc: bpc,
+            deltaBytes: deltaBytes,
+            len: len,
+            answer: targetWord,
+            encodingName: encoding.name
+        };
+
+        return { desc, question, answer: targetWord, stepsData, explain: `В кодировке ${encoding.name} 1 символ = ${bpc} байт. Исчезло ${deltaBytes} байт. Это ${deltaBytes / bpc} символов. Из них 2 символа (запятая и пробел). Значит, слово = ${len} символов. Ответ: <b>${targetWord}</b>.` };
+    }
+
+    function renderIntermediate(data) {
+        stepsFeedback.textContent = '';
+        
+        intermediateText.innerHTML = `
+            на 1 символ <input type="text" class="inline-input" id="step1a" placeholder="_"> бит = 
+            <input type="text" class="inline-input" id="step1b" placeholder="_"> байтов<br>
+            
+            на запятую и пробел отводится <input type="text" class="inline-input" id="step2a" placeholder="_"> бит = 
+            <input type="text" class="inline-input" id="step2b" placeholder="_"> байт<br>
+            
+            тогда искомое слово занимает <input type="text" class="inline-input" id="step3a" placeholder="_"> байт = 
+            <input type="text" class="inline-input" id="step3b" placeholder="_"> символов
+        `;
+
+        // Сохраняем правильные ответы в data-атрибуты или замыкание
+        const checkBtn = document.getElementById('checkStepsBtn');
+        
+        // Удаляем старый обработчик, чтобы не дублировался
+        const newCheckBtn = checkBtn.cloneNode(true);
+        checkBtn.parentNode.replaceChild(newCheckBtn, checkBtn);
+
+        newCheckBtn.addEventListener('click', () => {
+            const v = id => document.getElementById(id).value.trim();
+            const isNum = (val, exp) => val !== '' && !isNaN(val) && Number(val) === Number(exp);
+
+            const c1a = isNum(v('step1a'), data.bits);
+            const c1b = isNum(v('step1b'), data.bpc);
+            const c2a = isNum(v('step2a'), data.bits * 2);
+            const c2b = isNum(v('step2b'), data.bpc * 2);
+            const c3a = isNum(v('step3a'), data.deltaBytes);
+            const c3b = isNum(v('step3b'), data.len);
+
+            if (c1a && c1b && c2a && c2b && c3a && c3b) {
+                stepsFeedback.innerHTML = '<span style="color: var(--feedback-correct-text);">Верно! Вычислите слово.</span>';
+            } else {
+                let err = [];
+                if (!c1a || !c1b) err.push('1 символ');
+                if (!c2a || !c2b) err.push('запятая и пробел');
+                if (!c3a || !c3b) err.push('искомое слово');
+                stepsFeedback.innerHTML = `<span style="color: var(--feedback-incorrect-text);">Ошибка в шагах: ${err.join(', ')}</span>`;
+            }
+        });
     }
 
     function checkAnswer() {
         const raw = answerInput.value.trim();
         if (!raw) { setFeedback('incorrect', 'Введите ответ.'); return; }
         const expected = String(currentTask.answer).trim();
-        const ok = raw.toLowerCase() === expected.toLowerCase();
-        if (ok) {
-            setFeedback('correct', 'Верно. Ответ: <b>' + escapeHtml(expected) + '</b>.');
+        if (raw.toLowerCase() === expected.toLowerCase()) {
+            setFeedback('correct', `Верно. Ответ: <b>${escapeHtml(expected)}</b>.`);
         } else {
-            setFeedback('incorrect',
-                'Неверно. Вы указали <b>' + escapeHtml(raw) + '</b>. ' +
-                'Правильный ответ: <b>' + escapeHtml(expected) + '</b>. ' +
-                'Разбор смотрите в разделе «Решение».');
+            setFeedback('incorrect', `Неверно. Вы указали <b>${escapeHtml(raw)}</b>. Правильный ответ: <b>${escapeHtml(expected)}</b>.`);
         }
     }
 
     function showSolution() {
-        setFeedback('solution',
-            '<div class="sol-title">Решение</div>' +
-            '<div class="sol-explain">' + currentTask.explain + '</div>' +
-            '<div class="sol-label">Правильный ответ:</div>' +
-            '<div class="sol-answer">' + escapeHtml(currentTask.answer) + '</div>'
-        );
+        setFeedback('solution', `<div class="sol-title">Решение</div><div class="sol-explain">${currentTask.explain}</div><div class="sol-label">Правильный ответ:</div><div class="sol-answer">${escapeHtml(currentTask.answer)}</div>`);
     }
 
     function newTask() {
@@ -1105,16 +909,15 @@ btn1.addEventListener('click', () => showScreen(1));
         answerInput.value = '';
         taskDescEl.innerHTML = currentTask.desc;
         taskQuestionEl.innerHTML = currentTask.question;
-        setFeedback('neutral', 'Введите ответ и нажмите «Проверить».');
+        setFeedback('neutral', 'Введите ответ.');
+        renderIntermediate(currentTask.stepsData);
     }
 
     document.getElementById('check1').addEventListener('click', checkAnswer);
     document.getElementById('solution1').addEventListener('click', showSolution);
     document.getElementById('new1').addEventListener('click', newTask);
-    answerInput.addEventListener('keydown', e => {
-        if (e.key === 'Enter') { e.preventDefault(); checkAnswer(); }
-    });
-
+    answerInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkAnswer(); });
+    
     newTask();
 })();
 </script>
