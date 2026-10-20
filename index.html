@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!--Создай автономный HTML-файл (HTML + CSS + JS в одном) — тренажёр по информатике ОГЭ с двумя заданиями, переключаемыми кнопками в шапке. Структура. Один index.html. В шапке справа: бейдж прототипа, кнопки 📁 (задание 7) и 📘 (задание 1), кнопка 🌙/☀️ (тёмная тема, сохранение в localStorage). Переключение экранов — через JS, без перезагрузки. Задание 7 «Адресация». Генерируется условие и список фрагментов адреса, закодированных цифрами 1…N. Ученик вводит последовательность цифр. 4 прототипа: URL: протокол, ://, сервер, .tld, /, имя файла, расширение (7 частей). IP-адрес: 4 числа, одно с ведущей точкой. URL с протоколом: 7 частей. URL с каталогом: 8 частей с двумя слэшами. Слова (сервер, домен, файл, расширение, протокол) выбираются случайно из списков. Номера фрагментов перемешиваются, ответ никогда не 12345…. Собранный адрес в центре — единая строка URL без номеров; клик по чипу возвращает фрагмент обратно. Проверка: пустой ответ, не цифры, несовпадение длины, неверный порядок, верный — с разными сообщениями. «Решение» — правило формирования адреса, эталон, правильная последовательность, пояснение по фрагментам. Задание 1 «Кодирование текста». 4 прототипа по ФИПИ: Дано предложение «Слово1, Слово2, …, СловоN — категория». Одно слово вычеркнуто, убраны лишние запятые и пробелы. Известна экономия в байтах. Найти вычеркнутое слово. Кодировка КОИ-8 (1 байт/символ) или Unicode (2 байта/символ). Формула: Δ = (len + 2) × bpc. Целевое слово — не первое и не последнее в списке (чтобы ответ был однозначен). Категории: острова, рыбы, языки программирования, школьные предметы, дикие животные, хвойные растения, кошачьи, млекопитающие, профессии, реки, страны, моря. Слова брать из этих списков. Ответ — само слово. Проверка без учёта регистра. «Решение» — пошаговое: деление Δ на bpc, вычитание 2 символов (запятая и пробел), поиск слова нужной длины. Оформление. Современный аккуратный вид, max-width: 1400px, тёмная тема через CSS-переменные, официальный стиль ОГЭ, без placeholder и подсказок. Ответ на задание 7 — поле с inputmode="numeric", на задание 1 — обычное текстовое. Сообщения об ошибке — блочным текстом без flex. Код готов к размещению на GitHub Pages как единственный файл. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ОГЭ информатика · Тренажёр</title>
@@ -120,7 +119,6 @@
             overflow: hidden;
         }
 
-        /* Шапка */
         .header {
             background: var(--header-gradient);
             padding: 18px 44px;
@@ -146,7 +144,6 @@
             flex-wrap: wrap;
         }
 
-        /* Большие кнопки-вкладки */
         .nav-tabs {
             display: flex;
             gap: 10px;
@@ -204,7 +201,6 @@
         .screen { display: none; }
         .screen.active { display: block; }
 
-        /* Блоки условий */
         .task-statement {
             background: var(--accent-soft);
             border-left: 4px solid var(--accent);
@@ -230,7 +226,6 @@
             margin-top: 10px;
         }
 
-        /* Рабочая область Задания 7 */
         .work-area {
             display: flex;
             gap: 24px;
@@ -332,7 +327,6 @@
 
         .assembled-chip:hover { background: var(--accent-soft); color: var(--accent); }
 
-        /* Блок ответов и полей */
         .answer-block {
             background: var(--panel-bg);
             border: 1px solid var(--panel-border);
@@ -393,7 +387,6 @@
         }
         .btn-secondary:hover { background: var(--btn-secondary-hover); }
 
-        /* Промежуточные результаты */
         .intermediate-block {
             background: #fdfbf7;
             border: 1px solid #e5d9c5;
@@ -420,7 +413,6 @@
 
         [data-theme="dark"] .intermediate-title { color: #d4b07a; }
 
-        /* Инпуты внутри промежуточных */
         .inline-input {
             width: 50px;
             padding: 4px 6px;
@@ -479,7 +471,6 @@
         </div>
     </div>
 
-    <!-- Большие кнопки переключения -->
     <div class="nav-tabs">
         <button class="nav-tab active" id="tab7">Задание №7 (Адресация)</button>
         <button class="nav-tab" id="tab1">Задание №1 (Кодирование)</button>
@@ -487,7 +478,7 @@
 
     <div class="content">
 
-        <!-- ================= ЭКРАН 7 ================= -->
+        <!-- ЭКРАН 7 -->
         <div class="screen active" id="screen7">
             <div class="task-statement">
                 <div class="task-title">Условие</div>
@@ -522,7 +513,7 @@
             </div>
         </div>
 
-        <!-- ================= ЭКРАН 1 ================= -->
+        <!-- ЭКРАН 1 -->
         <div class="screen" id="screen1">
             <div class="task-statement">
                 <div class="task-title">Условие</div>
@@ -530,12 +521,9 @@
                 <div class="task-question" id="task1Question"></div>
             </div>
 
-            <!-- Промежуточные результаты (интерактив) -->
             <div class="intermediate-block active" id="intermediateBlock">
                 <div class="intermediate-title">Промежуточные результаты</div>
-                <div class="intermediate-text" id="intermediateText">
-                    <!-- заполняется JS -->
-                </div>
+                <div class="intermediate-text" id="intermediateText"></div>
                 <div style="margin-top: 12px;">
                     <button class="btn btn-secondary" id="checkStepsBtn" style="padding: 8px 16px; font-size: 14px;">Проверить шаги</button>
                     <span id="stepsFeedback" style="margin-left: 12px; font-size: 14px; font-weight: 600;"></span>
@@ -814,8 +802,22 @@ tab1.addEventListener('click', () => showScreen(1));
         const encoding = rand(ENCODINGS);
         const list = WORDS[cat.key];
 
-        const n = randInt(5, Math.min(7, list.length));
-        const chosen = pickNUnique(list, n);
+        // 1. Выбираем слова ТОЛЬКО с уникальной длиной, чтобы ответ был однозначным
+        const uniqueLenWords = [];
+        const usedLens = new Set();
+        for (const word of shuffle(list)) {
+            // Берем слово, если такой длины еще не было
+            if (!usedLens.has(word.length)) {
+                usedLens.add(word.length);
+                uniqueLenWords.push(word);
+            }
+        }
+
+        // Берем от 4 до 6 слов
+        const n = randInt(4, Math.min(6, uniqueLenWords.length));
+        const chosen = uniqueLenWords.slice(0, n);
+
+        // 2. Целевое слово — строго не первое и не последнее
         const targetIndex = randInt(1, chosen.length - 2);
         const targetWord = chosen[targetIndex];
 
@@ -832,7 +834,6 @@ tab1.addEventListener('click', () => showScreen(1));
 
         const question = `Напишите в ответе вычеркнутое название.`;
         
-        // Данные для промежуточного окна
         const stepsData = {
             bits: encoding.bitsPerChar,
             bpc: bpc,
@@ -859,10 +860,7 @@ tab1.addEventListener('click', () => showScreen(1));
             <input type="text" class="inline-input" id="step3b" placeholder="_"> символов
         `;
 
-        // Сохраняем правильные ответы в data-атрибуты или замыкание
         const checkBtn = document.getElementById('checkStepsBtn');
-        
-        // Удаляем старый обработчик, чтобы не дублировался
         const newCheckBtn = checkBtn.cloneNode(true);
         checkBtn.parentNode.replaceChild(newCheckBtn, checkBtn);
 
